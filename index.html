@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démarche de Cadrage & Vision IA | Clarje Epiphane ANOUMAN</title>
+    <meta name="description" content="Proposition de démarche stratégique, portefeuille de cas d'usage et gouvernance IA pour le poste de Responsable Intelligence Artificielle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-soft: #eff6ff;
+            --emerald: #059669;
+            --emerald-soft: #ecfdf5;
+            --amber: #d97706;
+            --amber-soft: #fffbeb;
+            --rose: #e11d48;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* En-tête Navigation */
+        .top-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--slate-200);
+            padding: 0.85rem 1.5rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-info h1 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            line-height: 1.2;
+        }
+
+        .brand-info span {
+            font-size: 0.78rem;
+            color: var(--slate-600);
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate-600);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background: white;
+            border-color: var(--slate-300);
+            color: var(--slate-700);
+        }
+
+        .btn-outline:hover {
+            background: var(--slate-100);
+            border-color: var(--slate-400);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--slate-800);
+        }
+
+        /* Container global */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 5rem 1.5rem;
+        }
+
+        /* Section Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: var(--radius-xl);
+            padding: 3.5rem 2.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.4);
+            color: #93c5fd;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            max-width: 900px;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffffff;
+        }
+
+        .hero-lead {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 820px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .principle-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            flex-shrink: 0;
+        }
+
+        .principle-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+
+        .principle-text p {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* Titres de sections */
+        .section-header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .section-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .section-header p {
+            font-size: 0.95rem;
+            color: var(--slate-600);
+            max-width: 750px;
+        }
+
+        /* Section 1 : Feuille de route 100 jours */
+        .timeline-container {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 3.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .step-card {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .step-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.85rem;
+        }
+
+        .step-1 .step-badge { background: #e0f2fe; color: #0369a1; }
+        .step-2 .step-badge { background: #fef3c7; color: #b45309; }
+        .step-3 .step-badge { background: #dcfce7; color: #15803d; }
+        .step-4 .step-badge { background: #f3e8ff; color: #7e22ce; }
+
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--slate-700);
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            line-height: 1.45;
+        }
+
+        .step-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--emerald);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .step-deliverable {
+            margin-top: 1rem;
+            padding-top: 0.85rem;
+            border-top: 1px dashed var(--slate-300);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--slate-800);
+        }
+
+        .step-deliverable span {
+            color: var(--accent);
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Section 2 : Cas d'usage & Matrice */
+        .usecases-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .disclaimer-box {
+            background: var(--amber-soft);
+            border-left: 4px solid var(--amber);
+            padding: 1rem 1.25rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.875rem;
+            color: #92400e;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .filters-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--slate-300);
+            padding: 0.45rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--slate-700);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .uc-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .uc-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--slate-400);
+        }
+
+        .uc-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.85rem;
+        }
+
+        .uc-dept {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        .uc-status {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            background: var(--slate-100);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .uc-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        .uc-desc {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .uc-scoring {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 0.85rem;
+            margin-bottom: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .score-col span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--slate-600);
+            margin-bottom: 0.15rem;
+            font-weight: 600;
+        }
+
+        .score-col strong {
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .score-high { color: var(--emerald); }
+        .score-med { color: var(--amber); }
+        .score-low { color: var(--accent); }
+
+        .uc-details {
+            border-top: 1px solid var(--slate-100);
+            padding-top: 1rem;
+            font-size: 0.82rem;
+            color: var(--slate-700);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .uc-details p strong {
+            color: var(--slate-900);
+        }
+
+        /* Simulateur de Scoring Interactif */
+        .simulator-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sim-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--slate-200);
+            padding-bottom: 1rem;
+        }
+
+        .sim-header h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .sim-grid { grid-template-columns: 1fr; }
+        }
+
+        .sim-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .control-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 0.4rem;
+        }
+
+        .control-group label span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: var(--slate-200);
+            border-radius: 4px;
+            outline: none;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--slate-300);
+            font-size: 0.85rem;
+            background: white;
+            color: var(--slate-800);
+            font-family: inherit;
+        }
+
+        .sim-result-card {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--accent);
+            margin: 0 auto 1rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1;
+        }
+
+        .score-unit {
+            font-size: 0.65rem;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .decision-badge {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .decision-quickwin { background: #dcfce7; color: #15803d; }
+        .decision-strategic { background: #e0f2fe; color: #0369a1; }
+        .decision-conditional { background: #fef3c7; color: #b45309; }
+        .decision-blocked { background: #fee2e2; color: #991b1b; }
+
+        .decision-rationale {
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            line-height: 1.45;
+            text-align: left;
+            background: white;
+            padding: 0.85rem;
+            border-radius: 6px;
+            border: 1px solid var(--slate-200);
+            margin-top: 0.85rem;
+        }
+
+        /* Section 3 : Gouvernance & Charte */
+        .governance-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .gov-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.75rem;
+        }
+
+        @media (max-width: 900px) {
+            .gov-grid { grid-template-columns: 1fr; }
+        }
+
+        .charter-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .charter-rules {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.25rem;
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .rule-num {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+        }
+
+        .rule-content h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.2rem;
+        }
+
+        .rule-content p {
+            font-size: 0.85rem;
+            color: var(--slate-600);
+            line-height: 1.45;
+        }
+
+        .data-tier-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tier-row {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+        }
+
+        .tier-row:last-child { margin-bottom: 0; }
+
+        .tier-public { background: #f0fdf4; border-color: #bbf7d0; }
+        .tier-internal { background: #f8fafc; border-color: #e2e8f0; }
+        .tier-restricted { background: #fef2f2; border-color: #fecaca; }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.35rem;
+        }
+
+        .tier-header h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .tier-public h5 { color: #166534; }
+        .tier-internal h5 { color: #1e293b; }
+        .tier-restricted h5 { color: #991b1b; }
+
+        .tier-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        .tier-public .tier-tag { background: #dcfce7; color: #166534; }
+        .tier-internal .tier-tag { background: #e2e8f0; color: #334155; }
+        .tier-restricted .tier-tag { background: #fee2e2; color: #991b1b; }
+
+        .tier-row p {
+            font-size: 0.8rem;
+            color: var(--slate-600);
+            line-height: 1.4;
+        }
+
+        /* Section 4 : Acculturation */
+        .culture-section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .culture-box {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .culture-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-box p {
+            font-size: 0.85rem;
+            color: var(--slate-600);
+            line-height: 1.45;
+        }
+
+        /* Section 5 : Candidat & Contact */
+        .profile-card {
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+            border: 1px solid var(--slate-300);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 680px;
+        }
+
+        .profile-avatar-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 3px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile-summary h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-summary .role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-summary p {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            line-height: 1.5;
+        }
+
+        .profile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-width: 220px;
+        }
+
+        .profile-actions .btn {
+            justify-content: center;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--slate-200);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--slate-600);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 1.8rem; }
+            .hero { padding: 2rem 1.5rem; }
+            .nav-links { display: none; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .profile-card { flex-direction: column; align-items: flex-start; }
+            .profile-left { flex-direction: column; align-items: flex-start; }
+            .profile-actions { width: 100%; }
+        }
+
+        /* Styles d'impression */
+        @media print {
+            .top-navbar, .nav-cta, .filters-toolbar, .profile-actions, .btn { display: none !important; }
+            body { background: white; color: black; font-size: 11pt; }
+            .hero { background: #f8fafc !important; color: black !important; border: 1px solid #ccc; padding: 1.5rem; }
+            .hero h2 { color: black !important; font-size: 18pt; }
+            .hero-lead { color: #333 !important; }
+            .timeline-container, .uc-card, .charter-card, .data-tier-card, .culture-section { box-shadow: none !important; border: 1px solid #ddd !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <header class="top-navbar">
+        <div class="nav-container">
+            <div class="brand-badge">
+                <div class="brand-avatar">CA</div>
+                <div class="brand-info">
+                    <h1>Clarje Epiphane ANOUMAN</h1>
+                    <span>Dossier de Candidature · Responsable Intelligence Artificielle</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#100jours">Feuille de route</a></li>
+                <li><a href="#cas-usage">Cas d'usage</a></li>
+                <li><a href="#gouvernance">Gouvernance & Risques</a></li>
+                <li><a href="#acculturation">Acculturation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <button class="btn btn-outline" onclick="window.print()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+                    Imprimer / PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+
+        <!-- En-tête / Hero Section -->
+        <section class="hero" id="vision">
+            <div class="hero-tag">Secrétariat Général · Département des Systèmes d'Information</div>
+            <h2>Démarche de cadrage & vision opérationnelle de l'Intelligence Artificielle</h2>
+            <p class="hero-lead">
+                Une approche managériale résolument orientée métiers : <strong>fédérer, cadrer et sécuriser</strong> les initiatives IA sans dispersion technique, pour transformer les besoins concrets d'Air Côte d'Ivoire en gains mesurables de performance et de qualité de service.
+            </p>
+
+            <div class="hero-principles">
+                <div class="principle-item">
+                    <div class="principle-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <div class="principle-text">
+                        <h4>Posture de Chef d'Orchestre</h4>
+                        <p>Recueil des besoins, cahiers des charges clairs et pilotage rigoureux des prestataires/éditeurs.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="principle-text">
+                        <h4>Culture du Risque & Conformité</h4>
+                        <p>Étanchéité des données confidentielles, conformité légale (loi 2013-450) et collaboration étroite avec le RSSI.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="principle-text">
+                        <h4>Acculturation & Copilot M365</h4>
+                        <p>Formation des équipes, animation d'un réseau de référents métiers et cadre clair pour les outils du quotidien.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1 : Feuille de route 100 jours -->
+        <section id="100jours" class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Prise de fonction</span>
+                <h3>Plan d'action des 100 premiers jours</h3>
+                <p>Une méthode progressive pour instaurer la confiance avec les directions, poser un cadre de gouvernance sécurisé et délivrer rapidement un premier succès tangible (Quick Win).</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-grid">
+                    <!-- Jours 1 - 30 -->
+                    <div class="step-card step-1">
+                        <span class="step-badge">Jours 1 à 30</span>
+                        <h4>Écoute & Cartographie</h4>
+                        <ul class="step-list">
+                            <li>Entretiens d'immersion avec chaque direction (Opérations, MRO, Commercial, RH, Finance).</li>
+                            <li>État des lieux avec le DSI et le RSSI sur la maturité des données et l'infrastructure actuelle.</li>
+                            <li>Inventaire des usages informels ou existants de l'IA (notamment Microsoft 365 Copilot).</li>
+                        </ul>
+                        <div class="step-deliverable">
+                            <span>Livrable clé</span>
+                            Rapport d'état des lieux & Registre initial des besoins métiers.
+                        </div>
+                    </div>
+
+                    <!-- Jours 31 - 60 -->
+                    <div class="step-card step-2">
+                        <span class="step-badge">Jours 31 à 60</span>
+                        <h4>Cadrage & Gouvernance</h4>
+                        <ul class="step-list">
+                            <li>Co-rédaction de la Charte d'usage de l'IA d'entreprise avec le RSSI et le juridique.</li>
+                            <li>Priorisation collégiale du portefeuille de projets (Matrice Valeur / Faisabilité / Données).</li>
+                            <li>Désignation des Référents IA au sein de chaque direction métier.</li>
+                        </ul>
+                        <div class="step-deliverable">
+                            <span>Livrable clé</span>
+                            Charte IA d'entreprise validée + Portefeuille priorisé soumis à la DG.
+                        </div>
+                    </div>
+
+                    <!-- Jours 61 - 90 -->
+                    <div class="step-card step-3">
+                        <span class="step-badge">Jours 61 à 90</span>
+                        <h4>1er Projet Pilote (PoC)</h4>
+                        <ul class="step-list">
+                            <li>Lancement du premier projet pilote ciblé avec les équipes du métier sélectionné.</li>
+                            <li>Rédaction du cahier des charges et encadrement du prestataire/solution retenue.</li>
+                            <li>Premiers ateliers de sensibilisation pour les collaborateurs et formation des référents.</li>
+                        </ul>
+                        <div class="step-deliverable">
+                            <span>Livrable clé</span>
+                            PoC en phase de test utilisateur + Guide d'usage Microsoft 365 Copilot.
+                        </div>
+                    </div>
+
+                    <!-- Jours 91 - 100+ -->
+                    <div class="step-card step-4">
+                        <span class="step-badge">Jours 91 à 100+</span>
+                        <h4>Bilan & Feuille de route</h4>
+                        <ul class="step-list">
+                            <li>Évaluation mesurée des résultats du pilote (gain de temps, satisfaction, ROI préliminaire).</li>
+                            <li>Décision formalisée de passage à l'échelle ou d'ajustement.</li>
+                            <li>Présentation de la feuille de route annuelle à la DSI et à la Direction Générale.</li>
+                        </ul>
+                        <div class="step-deliverable">
+                            <span>Livrable clé</span>
+                            Plan d'action annuel chiffré & Tableau de bord de pilotage IA.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 : Cas d'usage & Matrice de Priorisation -->
+        <section id="cas-usage" class="usecases-section">
+            <div class="section-header">
+                <span class="section-tag">Portefeuille de projets</span>
+                <h3>5 Cas d'usage métiers prioritaires (Hypothèses de travail)</h3>
+                <p>Ces cas d'usage constituent des pistes structurées à confronter aux réalités du terrain et aux arbitrages des directeurs métiers.</p>
+            </div>
+
+            <div class="disclaimer-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                    <strong>Principe de méthode :</strong> Ces fiches sont des propositions de cadrage. Chaque projet ne sera engagé qu'après validation de l'accessibilité des données, de l'accord du métier et de la conformité sécuritaire du RSSI.
+                </div>
+            </div>
+
+            <div class="filters-toolbar">
+                <button class="filter-btn active" onclick="filterCards('all')">Tous les cas (5)</button>
+                <button class="filter-btn" onclick="filterCards('commercial')">Commercial & Service Client</button>
+                <button class="filter-btn" onclick="filterCards('operations')">Opérations & Maintenance</button>
+                <button class="filter-btn" onclick="filterCards('support')">Finance, RH & Support</button>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Cas 1 : Réclamations Passagers -->
+                <div class="uc-card" data-category="commercial">
+                    <div>
+                        <div class="uc-meta">
+                            <span class="uc-dept">Commercial & Service Client</span>
+                            <span class="uc-status">Candidat Quick Win</span>
+                        </div>
+                        <h4>Assistance au traitement des réclamations passagers & bagages</h4>
+                        <p class="uc-desc">Triage automatique des emails et formulaires réclamations, détection de l'urgence/sentiment, extraction des numéros de vol/PIR et proposition de réponses pré-rédigées aux agents du service client.</p>
+                        
+                        <div class="uc-scoring">
+                            <div class="score-col">
+                                <span>Valeur Métier</span>
+                                <strong class="score-high">Élevée (Gain temps)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Faisabilité</span>
+                                <strong class="score-high">Rapide (NLP/RAG)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Données</span>
+                                <strong class="score-med">Moyenne (Textes)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uc-details">
+                        <p><strong>Garde-fou :</strong> Validation humaine systématique par l'agent avant envoi ; anonymisation des données personnelles.</p>
+                        <p><strong>KPI mesurable :</strong> Réduction de 40% du délai moyen de traitement des réclamations.</p>
+                    </div>
+                </div>
+
+                <!-- Cas 2 : Anticipation Retards -->
+                <div class="uc-card" data-category="operations">
+                    <div>
+                        <div class="uc-meta">
+                            <span class="uc-dept">Opérations de Vol & Sol</span>
+                            <span class="uc-status">Projet Stratégique</span>
+                        </div>
+                        <h4>Aide à l'anticipation des retards et gestion des escales</h4>
+                        <p class="uc-desc">Agrégation des données météo, des créneaux aéroportuaires et des rotations des appareils pour alerter le centre de contrôle opérationnel (OCC) sur les risques d'effet domino sur la journée.</p>
+                        
+                        <div class="uc-scoring">
+                            <div class="score-col">
+                                <span>Valeur Métier</span>
+                                <strong class="score-high">Très Élevée (Ponctualité)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Faisabilité</span>
+                                <strong class="score-med">Moyenne (Intégration)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Données</span>
+                                <strong class="score-med">Multi-sources</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uc-details">
+                        <p><strong>Garde-fou :</strong> Outil d'aide à la décision consultative, autorité décisionnelle restant 100% à l'OCC.</p>
+                        <p><strong>KPI mesurable :</strong> Amélioration de l'On-Time Performance (OTP) et réduction des coûts d'assistance escale.</p>
+                    </div>
+                </div>
+
+                <!-- Cas 3 : Maintenance MRO -->
+                <div class="uc-card" data-category="operations">
+                    <div>
+                        <div class="uc-meta">
+                            <span class="uc-dept">Maintenance Aéronautique (MRO)</span>
+                            <span class="uc-status">Assistance Technique</span>
+                        </div>
+                        <h4>Moteur de recherche sémantique dans la documentation technique</h4>
+                        <p class="uc-desc">Assistant de recherche sécurisé permettant aux ingénieurs et techniciens de retrouver instantanément les procédures, historiques de pannes et consignes constructeurs dans des milliers de pages de manuels.</p>
+                        
+                        <div class="uc-scoring">
+                            <div class="score-col">
+                                <span>Valeur Métier</span>
+                                <strong class="score-high">Élevée (Efficacité)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Faisabilité</span>
+                                <strong class="score-high">Élevée (RAG Documentaire)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Données</span>
+                                <strong class="score-high">Excellente (PDFs structurés)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uc-details">
+                        <p><strong>Garde-fou :</strong> Citations systématiques des chapitres et pages sources du manuel officiel sans hallucination permise.</p>
+                        <p><strong>KPI mesurable :</strong> Division par 3 du temps de diagnostic et fiabilisation des références pièces.</p>
+                    </div>
+                </div>
+
+                <!-- Cas 4 : Contrôle Facturation Escales -->
+                <div class="uc-card" data-category="support">
+                    <div>
+                        <div class="uc-meta">
+                            <span class="uc-dept">Direction Financière & Achats</span>
+                            <span class="uc-status">Optimisation des Coûts</span>
+                        </div>
+                        <h4>Contrôle automatisé des factures d'assistance en escale</h4>
+                        <p class="uc-desc">Rapprochement intelligent entre les prestations réelles enregistrées par les équipages (carburant, catering, handling) et les factures transmises par les aéroports et prestataires régionaux.</p>
+                        
+                        <div class="uc-scoring">
+                            <div class="score-col">
+                                <span>Valeur Métier</span>
+                                <strong class="score-high">Élevée (Économies nettes)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Faisabilité</span>
+                                <strong class="score-high">Élevée (OCR + Règles)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Données</span>
+                                <strong class="score-high">ERP / Bons de livraison</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uc-details">
+                        <p><strong>Garde-fou :</strong> Détection d'anomalies signalées à un contrôleur financier qui garde la validation comptable.</p>
+                        <p><strong>KPI mesurable :</strong> Détection précoce des sur-facturations et réduction du délai de clôture.</p>
+                    </div>
+                </div>
+
+                <!-- Cas 5 : Copilot M365 Transverse -->
+                <div class="uc-card" data-category="support">
+                    <div>
+                        <div class="uc-meta">
+                            <span class="uc-dept">RH & Fonctions Transverses</span>
+                            <span class="uc-status">Adoption Immédiate</span>
+                        </div>
+                        <h4>Cadrage & accompagnement à l'usage de Microsoft 365 Copilot</h4>
+                        <p class="uc-desc">Structurer l'usage de Copilot pour les tâches administratives quotidiennes (synthèse de réunions Teams, rédaction de notes, recherche documentaire interne), avec un contrôle strict des accès.</p>
+                        
+                        <div class="uc-scoring">
+                            <div class="score-col">
+                                <span>Valeur Métier</span>
+                                <strong class="score-med">Productivité globale</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Faisabilité</span>
+                                <strong class="score-high">Immédiate (Outil en place)</strong>
+                            </div>
+                            <div class="score-col">
+                                <span>Données</span>
+                                <strong class="score-med">Auditer les droits SharePoint</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uc-details">
+                        <p><strong>Garde-fou :</strong> Audit préalable des permissions documentaires pour éviter qu'un utilisateur n'accède à des données RH/salaires.</p>
+                        <p><strong>KPI mesurable :</strong> 80% des utilisateurs formés appliquant les règles de confidentialité.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulateur d'arbitrage de cas d'usage -->
+            <div class="simulator-box">
+                <div class="sim-header">
+                    <h4>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                        Simulateur d'Arbitrage & Priorisation de Cas d'Usage
+                    </h4>
+                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem;">
+                        Illustration de la méthode d'évaluation multicritères pour éclairer les arbitrages de la DSI et de la Direction Générale.
+                    </p>
+                </div>
+
+                <div class="sim-grid">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label for="simPreset">Cas d'usage préconfiguré</label>
+                            <select id="simPreset" onchange="loadPreset()">
+                                <option value="reclamations" selected>Cas 1 : Réclamations passagers (Commercial/Client)</option>
+                                <option value="retards">Cas 2 : Anticipation retards & escales (Opérations)</option>
+                                <option value="mro">Cas 3 : Recherche sémantique manuels (Maintenance)</option>
+                                <option value="escales">Cas 4 : Contrôle factures handling (Finance)</option>
+                                <option value="copilot">Cas 5 : Cadrage Copilot M365 (Transverse)</option>
+                                <option value="custom">-- Personnalisé / Nouveau besoin métier --</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Valeur métier & ROI attendu : <span id="valLabel">8/10</span></label>
+                            <input type="range" id="valRange" min="1" max="10" value="8" oninput="calculateScore()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Faisabilité technique & maturité solution : <span id="faisLabel">8/10</span></label>
+                            <input type="range" id="faisRange" min="1" max="10" value="8" oninput="calculateScore()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Disponibilité & qualité des données internes : <span id="dataLabel">6/10</span></label>
+                            <input type="range" id="dataRange" min="1" max="10" value="6" oninput="calculateScore()">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="riskSelect">Sensibilité des données & Risque</label>
+                            <select id="riskSelect" onchange="calculateScore()">
+                                <option value="low">Faible / Données publiques ou techniques constructeur</option>
+                                <option value="med" selected>Modéré / Données internes non confidentielles</option>
+                                <option value="high">Élevé / Données passagers (PII) ou données critiques de vol</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sim-result-card">
+                        <div class="score-circle" id="scoreCircle">
+                            <div class="score-number" id="scoreDisplay">76</div>
+                            <div class="score-unit">Score / 100</div>
+                        </div>
+
+                        <div class="decision-badge decision-quickwin" id="decisionBadge">
+                            Priorité 1 : Candidat Quick Win
+                        </div>
+
+                        <div class="decision-rationale" id="decisionRationale">
+                            <strong>Recommandation managériale :</strong> Projet à fort retour sur investissement et faisabilité rapide. Recommandé pour un projet pilote (PoC 30 à 45 jours) afin d'engager les équipes et créer une dynamique positive.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 : Gouvernance & Charte d'usage -->
+        <section id="gouvernance" class="governance-section">
+            <div class="section-header">
+                <span class="section-tag">Conformité & Maîtrise</span>
+                <h3>Cadre de Gouvernance & Projet de Charte IA</h3>
+                <p>Garantir que l'innovation s'exécute dans un cadre strict de protection du patrimoine informationnel, en liaison continue avec le RSSI et la DSI.</p>
+            </div>
+
+            <div class="gov-grid">
+                <!-- Charte d'usage -->
+                <div class="charter-card">
+                    <h4>Les 5 Principes Clés de la Charte d'Usage Collaborateurs</h4>
+                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem;">Règles pragmatiques à diffuser largement auprès de l'ensemble du personnel.</p>
+
+                    <div class="charter-rules">
+                        <div class="rule-item">
+                            <div class="rule-num">1</div>
+                            <div class="rule-content">
+                                <h5>Zéro donnée confidentielle dans les outils publics</h5>
+                                <p>Interdiction absolue d'injecter des données passagers (noms, passeports, paiements), des données de vol sensibles ou des documents stratégiques dans des IA grand public non contractualisées.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-num">2</div>
+                            <div class="rule-content">
+                                <h5>Responsabilité humaine obligatoire (Human in the loop)</h5>
+                                <p>L'IA produit des ébauches et des analyses d'aide à la décision. L'arbitrage final, la signature et la communication restent sous l'entière responsabilité du collaborateur.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-num">3</div>
+                            <div class="rule-content">
+                                <h5>Utilisation exclusive des outils homologués</h5>
+                                <p>Seuls les outils validés par la DSI et le RSSI (comme Microsoft 365 Copilot avec tenant sécurisé) sont autorisés pour le traitement des informations professionnelles.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-num">4</div>
+                            <div class="rule-content">
+                                <h5>Vigilance sur les biais et les hallucinations</h5>
+                                <p>Tout collaborateur utilisant l'IA doit vérifier systématiquement l'exactitude des chiffres, des dates et des références techniques citées.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-num">5</div>
+                            <div class="rule-content">
+                                <h5>Transparence et déclaration des cas d'usage</h5>
+                                <p>Toute initiative d'automatisation ou d'intégration d'un nouvel outil d'IA doit être déclarée au Responsable IA pour évaluation sécuritaire préalable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Classification des données -->
+                <div class="data-tier-card">
+                    <h4>Classification des Données & Éligibilité IA</h4>
+                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem; margin-bottom: 1.25rem;">Grille de lecture pour les chefs de projet et référents métiers.</p>
+
+                    <div class="tier-row tier-public">
+                        <div class="tier-header">
+                            <h5>Niveau 1 : Données Publiques</h5>
+                            <span class="tier-tag">Traitement Libre</span>
+                        </div>
+                        <p>Horaires publics, communiqués de presse, catalogues tarifaires officiels, conditions générales de vente. Usage possible sur tout modèle IA autorisé.</p>
+                    </div>
+
+                    <div class="tier-row tier-internal">
+                        <div class="tier-header">
+                            <h5>Niveau 2 : Données Internes Opérationnelles</h5>
+                            <span class="tier-tag">Environnement Fermé</span>
+                        </div>
+                        <p>Notes de service, manuels techniques non critiques, procédures internes. Traitement réservé à Microsoft 365 Copilot (tenant Air CI) ou modèles hébergés dédiés.</p>
+                    </div>
+
+                    <div class="tier-row tier-restricted">
+                        <div class="tier-header">
+                            <h5>Niveau 3 : Données Confidentielles & Passagers</h5>
+                            <span class="tier-tag">Haute Sécurité / Soumis à accord RSSI</span>
+                        </div>
+                        <p>Données à caractère personnel des passagers (PII), données salariales/RH, contrats d'achats stratégiques, télémétrie critique de vol. Traitement IA interdit sans chiffrement, anonymisation stricte et validation écrite DSI/RSSI (Loi 2013-450).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4 : Acculturation & Réseau des Référents -->
+        <section id="acculturation" class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Facteur humain</span>
+                <h3>Acculturation & Conduite du Changement</h3>
+                <p>L'intelligence artificielle n'a d'impact que si les collaborateurs se l'approprient en confiance et avec discernement.</p>
+            </div>
+
+            <div class="culture-section">
+                <div class="culture-grid">
+                    <div class="culture-box">
+                        <h4>1. Réseau des Référents Métiers</h4>
+                        <p>Identifier un point focal dans chaque direction (Opérations, Technique, Commercial, RH, Finance) pour remonter les besoins réels et servir de relais de bonnes pratiques sur le terrain.</p>
+                    </div>
+
+                    <div class="culture-box">
+                        <h4>2. Ateliers Pratiques « Découverte & Prompts »</h4>
+                        <p>Sessions courtes (45 min) par direction sur des cas concrets de leur quotidien, axées sur la formulation de requêtes efficaces et le respect des règles de confidentialité.</p>
+                    </div>
+
+                    <div class="culture-box">
+                        <h4>3. Guide Pratique Microsoft 365 Copilot</h4>
+                        <p>Mise à disposition d'un mémo illustré avec des exemples prêts à l'emploi (synthétiser une réunion Teams, trier des notes de frais, rédiger un compte rendu).</p>
+                    </div>
+
+                    <div class="culture-box">
+                        <h4>4. Partage des Retours d'Expérience (REX)</h4>
+                        <p>Publication trimestrielle des réussites concrètes obtenues par les équipes pour valoriser les initiatives positives et dédramatiser l'usage de la technologie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5 : Profil du Candidat & Contact -->
+        <section id="contact" class="section-container">
+            <div class="profile-card">
+                <div class="profile-left">
+                    <div class="profile-avatar-large">CA</div>
+                    <div class="profile-summary">
+                        <h3>Clarje Epiphane ANOUMAN</h3>
+                        <div class="role">Candidat au poste de Responsable Intelligence Artificielle</div>
+                        <p>
+                            Chef de projet digital ayant piloté et déployé plus de 15 plateformes métier en production. Alliant une culture éprouvée de la gestion des risques et de la conformité à une solide expérience de formateur et d'animateur d'équipes, je propose une démarche structurée, pragmatique et centrée sur la valeur métier pour accompagner la transformation d'Air Côte d'Ivoire.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="mailto:anoumanclarje@gmail.com" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        anoumanclarje@gmail.com
+                    </a>
+                    <a href="tel:+2250789580439" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        07 89 58 04 39 / 01 60 15 22 81
+                    </a>
+                    <a href="https://linkedin.com/in/clarje-epiphane-anouman-49a2113a0" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        Profil LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Document de synthèse élaboré par Clarje Epiphane ANOUMAN dans le cadre de sa candidature au poste de Responsable IA.</p>
+            <p style="margin-top: 0.35rem; color: var(--slate-400);">Abidjan, Côte d'Ivoire · Novembre 2026 · Conçu pour impression et consultation sur tout appareil.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts interactifs -->
+    <script>
+        function filterCards(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            const cards = document.querySelectorAll('.uc-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Données des cas d'usage prédéfinis
+        const presets = {
+            reclamations: { val: 8, fais: 8, data: 6, risk: 'med' },
+            retards: { val: 9, fais: 6, data: 6, risk: 'med' },
+            mro: { val: 8, fais: 8, data: 9, risk: 'low' },
+            escales: { val: 8, fais: 7, data: 8, risk: 'low' },
+            copilot: { val: 7, fais: 9, data: 6, risk: 'med' }
+        };
+
+        function loadPreset() {
+            const presetKey = document.getElementById('simPreset').value;
+            if (presetKey === 'custom') return;
+
+            const p = presets[presetKey];
+            if (p) {
+                document.getElementById('valRange').value = p.val;
+                document.getElementById('faisRange').value = p.fais;
+                document.getElementById('dataRange').value = p.data;
+                document.getElementById('riskSelect').value = p.risk;
+                calculateScore();
+            }
+        }
+
+        function calculateScore() {
+            const val = parseInt(document.getElementById('valRange').value, 10);
+            const fais = parseInt(document.getElementById('faisRange').value, 10);
+            const data = parseInt(document.getElementById('dataRange').value, 10);
+            const risk = document.getElementById('riskSelect').value;
+
+            document.getElementById('valLabel').textContent = val + '/10';
+            document.getElementById('faisLabel').textContent = fais + '/10';
+            document.getElementById('dataLabel').textContent = data + '/10';
+
+            // Formule de calcul pondérée
+            // Valeur (40%), Faisabilité (30%), Maturité données (30%)
+            let rawScore = Math.round((val * 0.40 + fais * 0.30 + data * 0.30) * 10);
+
+            let penalty = 0;
+            if (risk === 'high') {
+                penalty = 12; // Pénalité de complexité réglementaire & sécurité
+            } else if (risk === 'med') {
+                penalty = 4;
+            }
+
+            let finalScore = Math.max(10, Math.min(99, rawScore - penalty));
+
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreCircle = document.getElementById('scoreCircle');
+            const decisionBadge = document.getElementById('decisionBadge');
+            const decisionRationale = document.getElementById('decisionRationale');
+
+            scoreDisplay.textContent = finalScore;
+
+            // Logique décisionnelle managériale
+            if (risk === 'high' && data < 6) {
+                scoreCircle.style.borderColor = 'var(--rose)';
+                decisionBadge.className = 'decision-badge decision-blocked';
+                decisionBadge.textContent = 'Projet Bloqué / Risque Élevé';
+                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Données hautement sensibles sans socle data suffisamment robuste. Recommandation : <em>Aucun PoC immédiat</em>. Mettre en place d\'abord les garanties d\'anonymisation et l\'accord formel du RSSI et de l\'ARTCI.';
+            } else if (finalScore >= 75 && fais >= 7) {
+                scoreCircle.style.borderColor = 'var(--emerald)';
+                decisionBadge.className = 'decision-badge decision-quickwin';
+                decisionBadge.textContent = 'Priorité 1 : Candidat Quick Win (PoC 30-45j)';
+                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Excellent ratio valeur/faisabilité. Cas d\'usage idéal pour un premier projet pilote avec les métiers, permettant de démontrer un ROI rapide et d\'acculturer les équipes.';
+            } else if (finalScore >= 65) {
+                scoreCircle.style.borderColor = 'var(--accent)';
+                decisionBadge.className = 'decision-badge decision-strategic';
+                decisionBadge.textContent = 'Priorité 2 : Projet Stratégique Moyen Terme';
+                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Fort potentiel métier mais nécessitant un cadrage approfondi, la rédaction d\'un cahier des charges rigoureux et une consultation de prestataires/éditeurs spécialisés.';
+            } else if (data <= 5) {
+                scoreCircle.style.borderColor = 'var(--amber)';
+                decisionBadge.className = 'decision-badge decision-conditional';
+                decisionBadge.textContent = 'Priorité 3 : Chantier Données Préalable';
+                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> L\'idée métier est prometteuse mais la qualité ou l\'accessibilité des données internes est insuffisante. Recommandation : Engager un travail d\'assainissement des données avant tout projet IA.';
+            } else {
+                scoreCircle.style.borderColor = 'var(--slate-400)';
+                decisionBadge.className = 'decision-badge decision-conditional';
+                decisionBadge.textContent = 'Arbitrage Différé';
+                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Valeur métier ou faisabilité trop modeste au vu des priorités annuelles. Projet à consigner dans le registre de veille pour réévaluation ultérieure.';
+            }
+        }
+
+        // Initialisation
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateScore();
+        });
+    </script>
+</body>
+</html>
