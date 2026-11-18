@@ -1,42 +1,28 @@
-# Dossier Exécutif Web - Candidature Responsable IA (Air Côte d'Ivoire)
-**Candidat :** Clarje Epiphane ANOUMAN  
-**Poste visé :** Responsable Intelligence Artificielle (Secrétariat Général / DSI)
+# Cadrage de l'IA : note de candidature
 
----
+**Clarje Epiphane ANOUMAN** · Candidature au poste de Responsable Intelligence Artificielle (Air Côte d'Ivoire)
 
-## 🎯 Objectif de cette réalisation
-Ce livrable web interactif a été conçu pour se démarquer des candidatures classiques en démontrant par la preuve :
-1. **La posture managériale attendue** : Cadrer, prioriser, gouverner et fédérer (sans posture de développeur).
-2. **La compréhension des enjeux d'Air Côte d'Ivoire** : Cartographie de 5 cas d'usage concrets (Commercial, Opérations, MRO, Finance, RH) formulés comme des hypothèses de travail à arbitrer avec les directions métiers.
-3. **Le plan d'action des 100 premiers jours** : Méthode claire et progressive (Écoute -> Gouvernance -> 1er PoC Quick Win -> Feuille de route annuelle).
-4. **La culture du risque et de la conformité** : Projet de Charte d'usage de l'IA (données autorisées / interdites, encadrement Microsoft 365 Copilot, protection des données personnelles selon la loi ivoirienne n° 2013-450).
-5. **Un simulateur d'arbitrage multicritères interactif** : Permettant au recruteur ou au DSI de tester la formule de priorisation d'un projet IA (Valeur, Faisabilité, Qualité des données, Niveau de risque).
+**Consulter la note :** https://clarje-code.github.io/Dossier-de-Candidature-Responsable-Intelligence-Artificielle/
 
----
+## Contenu
 
-## 🚀 Comment visualiser et tester la page
+1. **Plan des 100 premiers jours** : écoute des directions, charte et priorités, premier résultat avec Microsoft 365 Copilot, plan d'action annuel.
+2. **Cinq cas d'usage à valider** : service client, opérations aériennes, maintenance, finance et usage transverse de Copilot, chacun avec ses garde-fous et ses indicateurs.
+3. **Simulateur de priorisation** : valeur (40 %), faisabilité (30 %), données (30 %), malus selon la sensibilité des données. Les fiches et le simulateur utilisent les mêmes notes.
+4. **Gouvernance** : projet de charte d'usage, classification des données, ISO/IEC 42001, données personnelles (loi n° 2013-450, ARTCI), évaluation des fournisseurs d'IA.
+5. **Acculturation** : réseau de référents, ateliers par métier, guide Copilot, retours d'expérience.
 
-### Option 1 : Directement dans votre navigateur
-Double-cliquez simplement sur le fichier `index.html` situé dans :
-`c:\wamp64\www\projet air Cote d'ivoire\index.html`
+## Avertissement
 
-### Option 2 : Via votre serveur Wamp local
-Si WampServer est lancé, ouvrez votre navigateur à l'adresse :
-`http://localhost/projet air Cote d'ivoire/`
+Ce document est une note personnelle de candidature. Il n'émane pas d'Air Côte d'Ivoire. Les cas d'usage et les notes sont des hypothèses construites à partir d'informations publiques, à valider avec les directions concernées.
 
-### Option 3 : Impression / Export en PDF haute qualité
-1. Ouvrez `index.html` dans Chrome ou Edge.
-2. Cliquez sur le bouton en haut à droite **« Imprimer / PDF »** (ou faites `Ctrl + P`).
-3. Choisissez **« Enregistrer au format PDF »**.  
-   *La feuille de style d'impression masque automatiquement les barres de navigation et formate l'ensemble en un dossier exécutif parfait de quelques pages.*
+## Technique
 
----
+- Une seule page HTML autonome (environ 75 Ko), sans bibliothèque JavaScript ; seule la police Plus Jakarta Sans est chargée depuis Google Fonts.
+- Responsive de 320 px à l'écran large, menu mobile, animations au défilement désactivées si le système demande moins d'animations.
+- Fiches, classement et simulateur calculés à partir d'une seule source de données.
+- Version imprimable de 6 pages A4 via le bouton « PDF ».
 
-## 📌 Comment valoriser ce livrable dans votre candidature
+## Contact
 
-1. **Dans votre Lettre de Motivation** :
-   Ajoutez une phrase clé à la fin :
-   > *« Afin d'illustrer concrètement ma démarche de cadrage, j'ai structuré une note de cadrage méthodologique (plan à 100 jours, matrice de priorisation de 5 cas d'usage et projet de charte de gouvernance) que je serais ravi de vous présenter lors d'un entretien. »*
-
-2. **Dans votre CV ou en lien joint** :
-   Vous pouvez héberger cette page gratuitement (sur Vercel, Netlify ou GitHub Pages) en 2 minutes pour obtenir un lien court ou un QR code à insérer discrètement dans votre CV.
+anoumanclarje@gmail.com · +225 07 89 58 04 39

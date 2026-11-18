@@ -1,1611 +1,1067 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Démarche de Cadrage & Vision IA | Clarje Epiphane ANOUMAN</title>
-    <meta name="description" content="Proposition de démarche stratégique, portefeuille de cas d'usage et gouvernance IA pour le poste de Responsable Intelligence Artificielle.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --accent-soft: #eff6ff;
-            --emerald: #059669;
-            --emerald-soft: #ecfdf5;
-            --amber: #d97706;
-            --amber-soft: #fffbeb;
-            --rose: #e11d48;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-300: #cbd5e1;
-            --slate-400: #94a3b8;
-            --slate-600: #475569;
-            --slate-700: #334155;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--slate-50);
-            color: var(--slate-800);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* En-tête Navigation */
-        .top-navbar {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--slate-200);
-            padding: 0.85rem 1.5rem;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .brand-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .brand-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-info h1 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            line-height: 1.2;
-        }
-
-        .brand-info span {
-            font-size: 0.78rem;
-            color: var(--slate-600);
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--slate-600);
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: 0.4rem 0.75rem;
-            border-radius: 8px;
-            transition: all 0.15s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-            background: var(--accent-soft);
-        }
-
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-outline {
-            background: white;
-            border-color: var(--slate-300);
-            color: var(--slate-700);
-        }
-
-        .btn-outline:hover {
-            background: var(--slate-100);
-            border-color: var(--slate-400);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--slate-800);
-        }
-
-        /* Container global */
-        .main-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 5rem 1.5rem;
-        }
-
-        /* Section Hero */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: var(--radius-xl);
-            padding: 3.5rem 2.5rem;
-            color: white;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(37, 99, 235, 0.2);
-            border: 1px solid rgba(37, 99, 235, 0.4);
-            color: #93c5fd;
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.25rem;
-            max-width: 900px;
-            font-family: 'Space Grotesk', sans-serif;
-            color: #ffffff;
-        }
-
-        .hero-lead {
-            font-size: 1.15rem;
-            color: #cbd5e1;
-            max-width: 820px;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .hero-principles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .principle-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.85rem;
-        }
-
-        .principle-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #60a5fa;
-            flex-shrink: 0;
-        }
-
-        .principle-text h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 0.2rem;
-        }
-
-        .principle-text p {
-            font-size: 0.82rem;
-            color: #94a3b8;
-            line-height: 1.4;
-        }
-
-        /* Titres de sections */
-        .section-header {
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .section-tag {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .section-header h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .section-header p {
-            font-size: 0.95rem;
-            color: var(--slate-600);
-            max-width: 750px;
-        }
-
-        /* Section 1 : Feuille de route 100 jours */
-        .timeline-container {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-bottom: 3.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .step-card {
-            background: var(--slate-50);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .step-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--accent);
-        }
-
-        .step-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            margin-bottom: 0.85rem;
-        }
-
-        .step-1 .step-badge { background: #e0f2fe; color: #0369a1; }
-        .step-2 .step-badge { background: #fef3c7; color: #b45309; }
-        .step-3 .step-badge { background: #dcfce7; color: #15803d; }
-        .step-4 .step-badge { background: #f3e8ff; color: #7e22ce; }
-
-        .step-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-bottom: 0.75rem;
-        }
-
-        .step-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            font-size: 0.85rem;
-            color: var(--slate-700);
-        }
-
-        .step-list li {
-            position: relative;
-            padding-left: 1.25rem;
-            line-height: 1.45;
-        }
-
-        .step-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--emerald);
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        .step-deliverable {
-            margin-top: 1rem;
-            padding-top: 0.85rem;
-            border-top: 1px dashed var(--slate-300);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--slate-800);
-        }
-
-        .step-deliverable span {
-            color: var(--accent);
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        /* Section 2 : Cas d'usage & Matrice */
-        .usecases-section {
-            margin-bottom: 3.5rem;
-        }
-
-        .disclaimer-box {
-            background: var(--amber-soft);
-            border-left: 4px solid var(--amber);
-            padding: 1rem 1.25rem;
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            font-size: 0.875rem;
-            color: #92400e;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .filters-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: white;
-            border: 1px solid var(--slate-300);
-            padding: 0.45rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--slate-700);
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .uc-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .uc-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--slate-400);
-        }
-
-        .uc-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.85rem;
-        }
-
-        .uc-dept {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--accent);
-            background: var(--accent-soft);
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-        }
-
-        .uc-status {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--slate-600);
-            background: var(--slate-100);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        .uc-card h4 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-bottom: 0.5rem;
-            line-height: 1.35;
-        }
-
-        .uc-desc {
-            font-size: 0.875rem;
-            color: var(--slate-600);
-            margin-bottom: 1.25rem;
-            line-height: 1.5;
-        }
-
-        .uc-scoring {
-            background: var(--slate-50);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 0.85rem;
-            margin-bottom: 1.25rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            text-align: center;
-        }
-
-        .score-col span {
-            display: block;
-            font-size: 0.7rem;
-            color: var(--slate-600);
-            margin-bottom: 0.15rem;
-            font-weight: 600;
-        }
-
-        .score-col strong {
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .score-high { color: var(--emerald); }
-        .score-med { color: var(--amber); }
-        .score-low { color: var(--accent); }
-
-        .uc-details {
-            border-top: 1px solid var(--slate-100);
-            padding-top: 1rem;
-            font-size: 0.82rem;
-            color: var(--slate-700);
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .uc-details p strong {
-            color: var(--slate-900);
-        }
-
-        /* Simulateur de Scoring Interactif */
-        .simulator-box {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .sim-header {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--slate-200);
-            padding-bottom: 1rem;
-        }
-
-        .sim-header h4 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sim-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        @media (max-width: 900px) {
-            .sim-grid { grid-template-columns: 1fr; }
-        }
-
-        .sim-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .control-group label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--slate-800);
-            margin-bottom: 0.4rem;
-        }
-
-        .control-group label span {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .control-group input[type="range"] {
-            width: 100%;
-            height: 6px;
-            background: var(--slate-200);
-            border-radius: 4px;
-            outline: none;
-            accent-color: var(--accent);
-            cursor: pointer;
-        }
-
-        .control-group select {
-            width: 100%;
-            padding: 0.55rem 0.75rem;
-            border-radius: 8px;
-            border: 1px solid var(--slate-300);
-            font-size: 0.85rem;
-            background: white;
-            color: var(--slate-800);
-            font-family: inherit;
-        }
-
-        .sim-result-card {
-            background: var(--slate-50);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 1.75rem;
-            text-align: center;
-        }
-
-        .score-circle {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: white;
-            border: 4px solid var(--accent);
-            margin: 0 auto 1rem auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .score-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--slate-900);
-            line-height: 1;
-        }
-
-        .score-unit {
-            font-size: 0.65rem;
-            color: var(--slate-600);
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .decision-badge {
-            display: inline-block;
-            font-size: 0.82rem;
-            font-weight: 700;
-            padding: 0.35rem 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.75rem;
-        }
-
-        .decision-quickwin { background: #dcfce7; color: #15803d; }
-        .decision-strategic { background: #e0f2fe; color: #0369a1; }
-        .decision-conditional { background: #fef3c7; color: #b45309; }
-        .decision-blocked { background: #fee2e2; color: #991b1b; }
-
-        .decision-rationale {
-            font-size: 0.82rem;
-            color: var(--slate-600);
-            line-height: 1.45;
-            text-align: left;
-            background: white;
-            padding: 0.85rem;
-            border-radius: 6px;
-            border: 1px solid var(--slate-200);
-            margin-top: 0.85rem;
-        }
-
-        /* Section 3 : Gouvernance & Charte */
-        .governance-section {
-            margin-bottom: 3.5rem;
-        }
-
-        .gov-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 1.75rem;
-        }
-
-        @media (max-width: 900px) {
-            .gov-grid { grid-template-columns: 1fr; }
-        }
-
-        .charter-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .charter-rules {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 1.25rem;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .rule-num {
-            width: 28px;
-            height: 28px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 0.15rem;
-        }
-
-        .rule-content h5 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-bottom: 0.2rem;
-        }
-
-        .rule-content p {
-            font-size: 0.85rem;
-            color: var(--slate-600);
-            line-height: 1.45;
-        }
-
-        .data-tier-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .tier-row {
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            margin-bottom: 1rem;
-            border: 1px solid transparent;
-        }
-
-        .tier-row:last-child { margin-bottom: 0; }
-
-        .tier-public { background: #f0fdf4; border-color: #bbf7d0; }
-        .tier-internal { background: #f8fafc; border-color: #e2e8f0; }
-        .tier-restricted { background: #fef2f2; border-color: #fecaca; }
-
-        .tier-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.35rem;
-        }
-
-        .tier-header h5 {
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        .tier-public h5 { color: #166534; }
-        .tier-internal h5 { color: #1e293b; }
-        .tier-restricted h5 { color: #991b1b; }
-
-        .tier-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.15rem 0.45rem;
-            border-radius: 4px;
-        }
-
-        .tier-public .tier-tag { background: #dcfce7; color: #166534; }
-        .tier-internal .tier-tag { background: #e2e8f0; color: #334155; }
-        .tier-restricted .tier-tag { background: #fee2e2; color: #991b1b; }
-
-        .tier-row p {
-            font-size: 0.8rem;
-            color: var(--slate-600);
-            line-height: 1.4;
-        }
-
-        /* Section 4 : Acculturation */
-        .culture-section {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .culture-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .culture-box {
-            background: var(--slate-50);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-        }
-
-        .culture-box h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-bottom: 0.5rem;
-        }
-
-        .culture-box p {
-            font-size: 0.85rem;
-            color: var(--slate-600);
-            line-height: 1.45;
-        }
-
-        /* Section 5 : Candidat & Contact */
-        .profile-card {
-            background: linear-gradient(to right, #ffffff, #f8fafc);
-            border: 1px solid var(--slate-300);
-            border-radius: var(--radius-xl);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .profile-left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            max-width: 680px;
-        }
-
-        .profile-avatar-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            border: 3px solid white;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .profile-summary h3 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--slate-900);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-summary .role {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-summary p {
-            font-size: 0.875rem;
-            color: var(--slate-600);
-            line-height: 1.5;
-        }
-
-        .profile-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            min-width: 220px;
-        }
-
-        .profile-actions .btn {
-            justify-content: center;
-            padding: 0.65rem 1.25rem;
-            font-size: 0.875rem;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--slate-200);
-            text-align: center;
-            font-size: 0.82rem;
-            color: var(--slate-600);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 1.8rem; }
-            .hero { padding: 2rem 1.5rem; }
-            .nav-links { display: none; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .profile-card { flex-direction: column; align-items: flex-start; }
-            .profile-left { flex-direction: column; align-items: flex-start; }
-            .profile-actions { width: 100%; }
-        }
-
-        /* Styles d'impression */
-        @media print {
-            .top-navbar, .nav-cta, .filters-toolbar, .profile-actions, .btn { display: none !important; }
-            body { background: white; color: black; font-size: 11pt; }
-            .hero { background: #f8fafc !important; color: black !important; border: 1px solid #ccc; padding: 1.5rem; }
-            .hero h2 { color: black !important; font-size: 18pt; }
-            .hero-lead { color: #333 !important; }
-            .timeline-container, .uc-card, .charter-card, .data-tier-card, .culture-section { box-shadow: none !important; border: 1px solid #ddd !important; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadrer l’IA chez Air Côte d’Ivoire · Note de candidature · Clarje Epiphane ANOUMAN</title>
+<meta name="description" content="Note de candidature au poste de Responsable Intelligence Artificielle : plan des 100 premiers jours, cinq cas d’usage priorisés, simulateur de priorisation, charte d’usage et gouvernance de l’IA.">
+<meta name="author" content="Clarje Epiphane ANOUMAN">
+<meta name="theme-color" content="#0b1324">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cadrer l’IA : note de candidature de Clarje Epiphane ANOUMAN">
+<meta property="og:description" content="Plan des 100 premiers jours, cas d’usage priorisés, charte d’usage et gouvernance de l’IA.">
+<meta property="og:url" content="https://clarje-code.github.io/Dossier-de-Candidature-Responsable-Intelligence-Artificielle/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1324'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23fff'%3ECA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============ Base ============ */
+:root{
+  --ink:#0b1324; --ink-2:#13203a; --ink-3:#1c2c4c;
+  --text:#1e293b; --muted:#5b6678; --faint:#8a94a6;
+  --line:#e3e8f0; --line-2:#d3dae6;
+  --bg:#f6f8fb; --card:#fff; --soft:#f1f4f9;
+  --accent:#2f5bea; --accent-soft:#eaf0ff; --accent-ink:#1d3fb8;
+  --p1:#0d8f63; --p1-soft:#e3f6ee;
+  --p2:#2f5bea; --p2-soft:#eaf0ff;
+  --pc:#b86e06; --pc-soft:#fdf2e1;
+  --pb:#c2334d; --pb-soft:#fdecef;
+  --gold:#d6a640;
+  --r-sm:8px; --r:14px; --r-lg:20px; --r-xl:28px;
+  --sh-1:0 1px 2px rgba(11,19,36,.05);
+  --sh-2:0 6px 20px -8px rgba(11,19,36,.14),0 2px 6px -2px rgba(11,19,36,.06);
+  --sh-3:0 22px 50px -20px rgba(11,19,36,.28);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --wrap:1180px;
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:var(--r-sm);text-decoration:none;font-weight:600;transition:top .2s}
+.skip:focus{top:1rem}
+
+/* ============ Navigation ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),var(--gold));z-index:60}
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.nav.scrolled{border-color:var(--line);box-shadow:0 6px 24px -18px rgba(11,19,36,.4)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0}
+.mono{width:38px;height:38px;border-radius:11px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;letter-spacing:-.02em;flex-shrink:0}
+.brand b{display:block;font-size:.95rem;line-height:1.15;color:var(--ink);white-space:nowrap}
+.brand small{display:block;font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu{display:flex;align-items:center;gap:.15rem;list-style:none}
+.menu a{display:block;white-space:nowrap;text-decoration:none;font-size:.86rem;font-weight:600;color:var(--muted);padding:.45rem .7rem;border-radius:999px;transition:color .2s,background .2s}
+.menu a:hover{color:var(--ink);background:var(--soft)}
+.menu a.active{color:var(--accent-ink);background:var(--accent-soft)}
+.nav-actions{display:flex;align-items:center;gap:.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.875rem;padding:.62rem 1.05rem;border-radius:999px;border:1px solid transparent;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .2s var(--ease),background .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink-3);box-shadow:var(--sh-2)}
+.btn-line{background:#fff;border-color:var(--line-2);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink);}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line-2);background:#fff;cursor:pointer;place-items:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+@media screen and (max-width:1080px){
+  .menu{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:.25rem;padding:1rem clamp(1rem,4vw,2rem) 1.5rem;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--sh-3);transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s var(--ease),visibility .25s}
+  .menu.open{opacity:1;transform:none;visibility:visible}
+  .menu a{font-size:1rem;padding:.8rem 1rem;border-radius:var(--r-sm)}
+  .burger{display:grid}
+  .nav-actions .btn-print{display:none}
+}
+@media screen and (max-width:480px){.brand small{display:none}.eyebrow{font-size:.66rem;letter-spacing:.05em}}
+
+/* ============ Hero ============ */
+.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:clamp(3.5rem,8vw,6.5rem) 0 clamp(3rem,6vw,4.5rem)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(700px 380px at 85% 10%,rgba(47,91,234,.35),transparent 70%),
+  radial-gradient(520px 300px at 10% 100%,rgba(214,166,64,.16),transparent 70%);pointer-events:none}
+.hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);animation:drift 30s linear infinite;pointer-events:none}
+@keyframes drift{to{background-position:48px 48px,48px 48px}}
+.hero .wrap{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#b9c8f5;background:rgba(47,91,234,.16);border:1px solid rgba(120,150,255,.3);padding:.4rem .85rem;border-radius:999px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.hero h1{font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:1.4rem 0 1.2rem;max-width:15ch}
+.hero h1 em{font-style:normal;background:linear-gradient(92deg,#fff 10%,#9db6ff 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:clamp(1.02rem,1.6vw,1.2rem);color:#c3cde0;max-width:62ch}
+.hero .lead strong{color:#fff;font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:clamp(2.5rem,5vw,3.5rem);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);overflow:hidden}
+.stat{background:rgba(11,19,36,.6);padding:1.25rem 1.35rem}
+.stat b{display:block;font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:.82rem;color:#9fabc2;margin-top:.25rem;line-height:1.35}
+@media screen and (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ Sections ============ */
+section{padding:clamp(3.5rem,7vw,5.5rem) 0}
+.sec-head{max-width:760px;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+.tag{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.sec-head h2{font-size:clamp(1.65rem,3.4vw,2.45rem);line-height:1.12;letter-spacing:-.03em;font-weight:800;color:var(--ink);margin:.5rem 0 .75rem}
+.sec-head p{color:var(--muted);font-size:1.02rem}
+.alt{background:#fff;border-block:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-1)}
+
+/* Reveal */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ============ Correspondance avec l'offre ============ */
+.map{display:grid;gap:.75rem}
+.map-row{display:grid;grid-template-columns:minmax(0,.9fr) 28px minmax(0,1.5fr) auto;align-items:center;gap:1rem;padding:1.1rem 1.25rem;border-radius:var(--r);background:#fff;border:1px solid var(--line);text-decoration:none;transition:border-color .2s,box-shadow .25s,transform .25s var(--ease)}
+.map-row:hover{border-color:var(--accent);box-shadow:var(--sh-2);transform:translateY(-2px)}
+.map-row .from small{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.map-row .from b{font-size:1rem;color:var(--ink);line-height:1.3}
+.map-row .arrow{color:var(--accent);transition:transform .25s var(--ease)}
+.map-row:hover .arrow{transform:translateX(4px)}
+.map-row .to{font-size:.9rem;color:var(--muted);line-height:1.5}
+.map-row .go{font-size:.78rem;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:.3rem .65rem;border-radius:999px;white-space:nowrap}
+@media screen and (max-width:760px){.map-row{grid-template-columns:1fr;gap:.45rem}.map-row .arrow{display:none}.map-row .go{justify-self:start}}
+
+/* ============ 100 jours ============ */
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.timeline::before{content:"";position:absolute;top:22px;left:22px;width:calc(75% + .9375rem);height:2px;background:var(--line)}
+.timeline .fill{position:absolute;top:22px;left:22px;width:calc(75% + .9375rem);height:2px;background:linear-gradient(90deg,var(--accent),var(--gold));transform-origin:0 50%;transform:scaleX(0);transition:transform 1.6s var(--ease) .2s}
+.timeline.in .fill{transform:scaleX(1)}
+.step{position:relative}
+.step .node{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;background:#fff;border:2px solid var(--line-2);display:grid;place-items:center;font-weight:800;font-size:.95rem;color:var(--ink);transition:border-color .4s,background .4s,color .4s;transition-delay:var(--nd,0s)}
+.timeline.in .node{border-color:var(--accent);background:var(--ink);color:#fff}
+.step .body{margin-top:1rem;padding:1.35rem;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);height:calc(100% - 62px);display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s var(--ease)}
+.step .body:hover{box-shadow:var(--sh-2);transform:translateY(-3px)}
+.step .when{font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.step h3{font-size:1.1rem;color:var(--ink);margin:.25rem 0 .75rem;letter-spacing:-.01em}
+.step ul{list-style:none;display:grid;gap:.55rem;font-size:.875rem;color:var(--muted);flex:1}
+.step li{position:relative;padding-left:1.15rem;line-height:1.45}
+.step li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.deliv{margin-top:1rem;padding-top:.85rem;border-top:1px dashed var(--line-2);font-size:.83rem;font-weight:600;color:var(--ink);line-height:1.4}
+.deliv span{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--p1);margin-bottom:.15rem}
+@media screen and (max-width:980px){
+  .timeline{grid-template-columns:1fr;gap:0;padding-left:0}
+  .timeline::before,.timeline .fill{top:22px;bottom:40px;left:22px;right:auto;width:2px;height:auto}
+  .timeline .fill{transform:scaleY(0);transform-origin:50% 0}
+  .timeline.in .fill{transform:scaleY(1)}
+  .step{display:grid;grid-template-columns:46px 1fr;gap:1rem;padding-bottom:1.25rem}
+  .step .body{margin-top:0;height:auto}
+}
+.reporting{margin-top:2rem;padding:1.5rem;border-radius:var(--r-lg);background:var(--ink);color:#fff;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:1.5rem;align-items:start}
+.reporting h3{font-size:1.15rem;letter-spacing:-.01em;line-height:1.3}
+.reporting h3 small{display:block;font-size:.82rem;font-weight:500;color:#9fabc2;margin-top:.4rem;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:.9rem}
+.kpi b{display:block;font-size:.88rem;margin-bottom:.25rem}
+.kpi span{display:block;font-size:.78rem;color:#aab5ca;line-height:1.4}
+@media screen and (max-width:1080px){.reporting{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
+
+/* ============ Cas d'usage ============ */
+.notice{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.2rem;border-radius:var(--r);background:var(--pc-soft);border:1px solid #f3dcb5;color:#7a4a06;font-size:.9rem;margin-bottom:1.5rem}
+.notice svg{flex-shrink:0;margin-top:.15rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.chip{border:1px solid var(--line-2);background:#fff;padding:.5rem .95rem;border-radius:999px;font-size:.84rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s}
+.chip:hover{color:var(--ink);border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1.25rem}
+.case{display:flex;flex-direction:column;padding:1.5rem;transition:box-shadow .3s,transform .3s var(--ease),border-color .3s}
+.case:hover{box-shadow:var(--sh-2);transform:translateY(-3px);border-color:var(--line-2)}
+.case.hide{display:none}
+.case.show{animation:pop .45s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;margin-bottom:.9rem}
+.dept{font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.prio{font-size:.74rem;font-weight:700;padding:.28rem .6rem;border-radius:999px;white-space:nowrap}
+.prio.p1{background:var(--p1-soft);color:var(--p1)}
+.prio.p2{background:var(--p2-soft);color:var(--p2)}
+.prio.pc{background:var(--pc-soft);color:var(--pc)}
+.prio.pb{background:var(--pb-soft);color:var(--pb)}
+.case h3{font-size:1.14rem;line-height:1.3;color:var(--ink);letter-spacing:-.01em;margin-bottom:.5rem}
+.case .desc{font-size:.9rem;color:var(--muted);margin-bottom:1.1rem}
+.meters{display:grid;gap:.55rem;margin-bottom:1rem}
+.meter{display:grid;grid-template-columns:96px 1fr 34px;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted)}
+.meter i{display:block;height:6px;border-radius:6px;background:var(--soft);overflow:hidden}
+.meter i::after{content:"";display:block;height:100%;width:calc(var(--v) * 10%);border-radius:6px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);transition:transform 1s var(--ease) .15s}
+.case.in .meter i::after,.no-anim .meter i::after{transform:scaleX(1)}
+.meter b{font-variant-numeric:tabular-nums;color:var(--ink);text-align:right}
+.risk{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted);padding:.55rem .75rem;border-radius:var(--r-sm);background:var(--soft);margin-bottom:1rem}
+.risk b{font-weight:700}
+.risk .low{color:var(--p1)}.risk .med{color:var(--pc)}.risk .high{color:var(--pb)}
+.score-chip{margin-left:auto;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.case details{margin-top:auto;border-top:1px solid var(--line);padding-top:.85rem}
+.case summary{list-style:none;cursor:pointer;font-size:.85rem;font-weight:700;color:var(--accent-ink);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.case summary::-webkit-details-marker{display:none}
+.case summary .chev{transition:transform .25s var(--ease)}
+.case details[open] summary .chev{transform:rotate(180deg)}
+.case .more{display:grid;gap:.55rem;font-size:.86rem;color:var(--muted);padding-top:.75rem}
+.case .more b{color:var(--ink)}
+.case details[open] .more{animation:pop .35s var(--ease)}
+
+/* Classement + simulateur */
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.25rem;margin-top:2.25rem}
+@media screen and (max-width:980px){.lab{grid-template-columns:1fr}}
+.panel{padding:1.6rem}
+.panel h3{font-size:1.12rem;color:var(--ink);letter-spacing:-.01em}
+.panel .sub{font-size:.86rem;color:var(--muted);margin:.3rem 0 1.25rem}
+.rank{list-style:none;display:grid;gap:.85rem}
+.rank li{display:grid;grid-template-columns:1fr auto;gap:.35rem .75rem;align-items:center;cursor:pointer;padding:.55rem .65rem;margin:-.55rem -.65rem;border-radius:var(--r-sm);transition:background .2s}
+.rank li:hover,.rank li.sel{background:var(--soft)}
+.rank .nm{font-size:.88rem;font-weight:600;color:var(--ink)}
+.rank .sc{font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink)}
+.rank .bar{grid-column:1/-1;height:8px;border-radius:8px;background:var(--soft);overflow:hidden}
+.rank .bar i{display:block;height:100%;border-radius:8px;width:var(--w);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.1s var(--ease)}
+.rank.in .bar i{transform:scaleX(1)}
+.rank .lbl{grid-column:1/-1;font-size:.74rem;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:.35rem}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+.sim{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:1.5rem;align-items:start}
+@media screen and (max-width:600px){.sim{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:flex;justify-content:space-between;gap:.5rem;font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+.field label output{font-weight:800;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+select{width:100%;padding:.65rem .8rem;border:1px solid var(--line-2);border-radius:var(--r-sm);background:#fff;font-size:.86rem;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235b6678' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center;padding-right:2.2rem}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--accent) var(--p,50%),var(--line) var(--p,50%))}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:var(--line)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--accent)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--accent);margin-top:-7px;box-shadow:0 2px 6px rgba(11,19,36,.2);transition:transform .15s}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.15)}
+.result{text-align:center;padding:1.35rem;border-radius:var(--r);background:var(--soft)}
+.ring{position:relative;width:132px;height:132px;margin:0 auto .9rem}
+.ring svg{transform:rotate(-90deg)}
+.ring .trk{stroke:var(--line)}
+.ring .val{stroke:var(--p1);stroke-linecap:round;transition:stroke-dashoffset .8s var(--ease),stroke .4s}
+.ring .num{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring .num b{font-size:2.2rem;font-weight:800;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.ring .num small{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.decision{display:inline-block;font-size:.8rem;font-weight:800;padding:.38rem .75rem;border-radius:999px;transition:background .3s,color .3s}
+.why{font-size:.84rem;color:var(--muted);text-align:left;margin-top:.85rem;line-height:1.5;min-height:6.2em}
+.method{font-size:.8rem;color:var(--muted);background:var(--soft);border-radius:var(--r-sm);padding:.75rem .9rem;margin-top:1.25rem;line-height:1.5}
+
+/* ============ Gouvernance ============ */
+.gov{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1.25rem}
+@media screen and (max-width:980px){.gov{grid-template-columns:1fr}}
+.rules{list-style:none;display:grid;gap:1.1rem;margin-top:1.25rem;counter-reset:r}
+.rules li{display:grid;grid-template-columns:32px 1fr;gap:.9rem;counter-increment:r}
+.rules li::before{content:counter(r);width:32px;height:32px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.rules b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:.15rem}
+.rules span{font-size:.86rem;color:var(--muted);line-height:1.5}
+.tiers{display:grid;gap:.75rem;margin-top:1.25rem}
+.tier{padding:1rem 1.1rem;border-radius:var(--r);border:1px solid;border-left-width:4px}
+.tier.t1{background:#f3fbf7;border-color:#cdebdc;border-left-color:var(--p1)}
+.tier.t2{background:#f6f8fc;border-color:var(--line);border-left-color:var(--accent)}
+.tier.t3{background:#fdf5f6;border-color:#f3d2d8;border-left-color:var(--pb)}
+.tier header{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap}
+.tier b{font-size:.92rem;color:var(--ink)}
+.tier em{font-style:normal;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.t1 em{color:var(--p1)}.t2 em{color:var(--accent-ink)}.t3 em{color:var(--pb)}
+.tier p{font-size:.84rem;color:var(--muted);line-height:1.5}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.25rem}
+@media screen and (max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media screen and (max-width:560px){.pillars{grid-template-columns:1fr}}
+.pillar{padding:1.35rem;transition:transform .25s var(--ease),box-shadow .25s}
+.pillar:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
+.ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);margin-bottom:.9rem}
+.pillar b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:.3rem;line-height:1.3}
+.pillar p{font-size:.84rem;color:var(--muted);line-height:1.5}
+
+/* ============ Acculturation ============ */
+.adopt{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media screen and (max-width:980px){.adopt{grid-template-columns:repeat(2,1fr)}}
+@media screen and (max-width:560px){.adopt{grid-template-columns:1fr}}
+.adopt .card{padding:1.5rem;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s}
+.adopt .card:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
+.adopt .n{font-size:2.6rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--line-2);margin-bottom:.75rem}
+.adopt h3{font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
+.adopt p{font-size:.86rem;color:var(--muted);line-height:1.5}
+
+/* ============ Profil ============ */
+.profile{background:var(--ink);color:#fff;border-radius:var(--r-xl);padding:clamp(1.5rem,4vw,2.75rem);position:relative;overflow:hidden}
+.profile::before{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(47,91,234,.4),transparent 70%);pointer-events:none}
+.profile-top{position:relative;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.who{display:flex;gap:1.25rem;align-items:center;max-width:640px}
+.who .mono{width:72px;height:72px;border-radius:20px;font-size:1.5rem;background:linear-gradient(135deg,var(--accent),#173aa8);flex-shrink:0}
+.who h2{font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.02em;line-height:1.15}
+.who .role{color:#9db6ff;font-weight:600;font-size:.92rem;margin:.2rem 0 .5rem}
+.who p{color:#b8c3d8;font-size:.92rem;line-height:1.55}
+.contacts{display:grid;gap:.55rem;min-width:min(100%,260px)}
+.proofs{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin-top:2rem}
+@media screen and (max-width:980px){.proofs{grid-template-columns:repeat(2,1fr)}}
+@media screen and (max-width:560px){.proofs{grid-template-columns:1fr}.who{flex-direction:column;align-items:flex-start}}
+.proof{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.1rem;transition:background .25s,border-color .25s}
+.proof:hover{background:rgba(255,255,255,.08);border-color:rgba(157,182,255,.4)}
+.proof small{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.proof p{font-size:.85rem;color:#c6cfe0;line-height:1.5}
+.proof b{color:#fff}
+.proofs-title{position:relative;font-size:.95rem;margin-top:2.25rem;color:#fff}
+
+footer{padding:2.5rem 0 3rem;text-align:center;font-size:.82rem;color:var(--muted)}
+footer p+p{margin-top:.35rem;color:var(--faint)}
+
+.to-top{position:fixed;right:1.1rem;bottom:1.1rem;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:var(--sh-3);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s var(--ease);z-index:40}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ============ Mouvement réduit ============ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .timeline .fill,.rank .bar i,.meter i::after{transform:none!important}
+}
+
+/* ============ Impression ============ */
+@media print{
+  @page{size:A4;margin:12mm}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero .lead strong{color:var(--ink)}
+  .cases{grid-template-columns:repeat(3,1fr)!important}
+  .case h3{font-size:10.5pt}.case .desc{font-size:8.5pt;margin-bottom:.5rem}
+  .meters{gap:.2rem;margin-bottom:.5rem}
+  body{background:#fff;font-size:9.5pt}
+  .nav,.progress,.hero-cta,.chips,.to-top,.skip,.burger,#simulateur,.notice,.legend,.case summary,.hero .grid-bg{display:none!important}
+  .hero h1{font-size:22pt;max-width:none;margin:.6rem 0}
+  .sec-head{margin-bottom:.8rem;break-after:avoid;page-break-after:avoid}
+  #plan,#cas-usage,#gouvernance,#acculturation{break-before:page;page-break-before:always}
+  footer{padding:1rem 0 0}
+  .sec-head h2{font-size:15pt}
+  .sec-head p{font-size:9.5pt}
+  .stats{margin-top:1rem}.stat{padding:.6rem .8rem}.stat b{font-size:16pt}
+  .map-row{padding:.55rem .8rem;grid-template-columns:1fr 1.6fr}
+  .map-row .arrow,.map-row .go{display:none}
+  .timeline{grid-template-columns:repeat(4,1fr);gap:.6rem}
+  .timeline::before,.timeline .fill,.step .node{display:none}
+  .step{display:block;padding:0}
+  .step .body{margin:0;padding:.8rem;height:100%}
+  .step ul{font-size:8.5pt}
+  .reporting{margin-top:1rem;padding:.9rem;grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(5,1fr)}
+  .cases{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .case{padding:.9rem}
+  .case details{border:0;padding-top:.3rem}
+  .case .more{padding-top:0;font-size:8.5pt}
+  .lab{margin-top:1rem}
+  .panel{padding:1rem}
+  .gov{grid-template-columns:1fr 1fr}
+  .pillars,.adopt{grid-template-columns:repeat(4,1fr);gap:.6rem}
+  .pillar,.adopt .card{padding:.8rem}
+  .adopt .n{font-size:16pt;margin-bottom:.3rem}
+  .ico{display:none}
+  .proofs{grid-template-columns:repeat(4,1fr)}
+  .profile{padding:1rem}
+  .profile::before,.hero::before{display:none}
+  .who .mono{background:var(--ink)!important}
+  .who h2,.proofs-title{color:var(--ink)}
+  .who .role{color:var(--accent-ink)}
+  .proof small{color:var(--accent-ink)}
+  .proof p{color:var(--muted)}
+  #profil{padding-top:1rem!important}
+  .contacts{grid-template-columns:1fr 1fr;min-width:0}
+  .contacts .btn{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);padding:.3rem .6rem;font-size:8.5pt}
+  .lab{grid-template-columns:1fr}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .hero{background:#fff!important;color:var(--ink);padding:0 0 1rem}
+  .hero::before,.hero .grid-bg{display:none}
+  .hero h1 em{color:var(--ink);background:none}
+  .hero .lead{color:var(--muted)}
+  .eyebrow{color:var(--accent-ink);background:none}
+  .stats{background:var(--line)}
+  .stat{background:#fff}.stat span{color:var(--muted)}
+  section{padding:1.2rem 0}
+  .alt{border:0}
+  .case.hide{display:flex!important}
+  .card,.step .body,.map-row{box-shadow:none!important;break-inside:avoid}
+  .timeline .fill,.rank .bar i,.meter i::after{transform:none!important}
+  .reporting,.profile{background:#fff!important;color:var(--ink);border:1px solid var(--line)}
+  .kpi,.proof{background:#fff;border-color:var(--line)}
+  .kpi span,.proof p,.who p{color:var(--muted)}
+  .proof b{color:var(--ink)}
+  .reporting h3 small{color:var(--muted)}
+  .lab{grid-template-columns:1fr}
+  .step,.tier,.pillar,.adopt .card,.proof,.rules li{break-inside:avoid}
+  a[href^="http"]::after{content:""}
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-    <!-- Barre de navigation -->
-    <header class="top-navbar">
-        <div class="nav-container">
-            <div class="brand-badge">
-                <div class="brand-avatar">CA</div>
-                <div class="brand-info">
-                    <h1>Clarje Epiphane ANOUMAN</h1>
-                    <span>Dossier de Candidature · Responsable Intelligence Artificielle</span>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#vision">Vision</a></li>
-                <li><a href="#100jours">Feuille de route</a></li>
-                <li><a href="#cas-usage">Cas d'usage</a></li>
-                <li><a href="#gouvernance">Gouvernance & Risques</a></li>
-                <li><a href="#acculturation">Acculturation</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-cta">
-                <button class="btn btn-outline" onclick="window.print()">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
-                    Imprimer / PDF
-                </button>
-            </div>
-        </div>
-    </header>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Retour en haut de page">
+      <span class="mono" aria-hidden="true">CA</span>
+      <span><b>Clarje Epiphane ANOUMAN</b><small>Candidature · Responsable Intelligence Artificielle</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <ul class="menu" id="menu">
+        <li><a href="#offre">L’offre</a></li>
+        <li><a href="#plan">100 jours</a></li>
+        <li><a href="#cas-usage">Cas d’usage</a></li>
+        <li><a href="#gouvernance">Gouvernance</a></li>
+        <li><a href="#acculturation">Acculturation</a></li>
+        <li><a href="#profil">Profil</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-line btn-print" type="button" data-print>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+        PDF
+      </button>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
+    </div>
+  </div>
+</header>
 
-    <div class="main-wrapper">
+<main id="contenu">
 
-        <!-- En-tête / Hero Section -->
-        <section class="hero" id="vision">
-            <div class="hero-tag">Secrétariat Général · Département des Systèmes d'Information</div>
-            <h2>Démarche de cadrage & vision opérationnelle de l'Intelligence Artificielle</h2>
-            <p class="hero-lead">
-                Une approche managériale résolument orientée métiers : <strong>fédérer, cadrer et sécuriser</strong> les initiatives IA sans dispersion technique, pour transformer les besoins concrets d'Air Côte d'Ivoire en gains mesurables de performance et de qualité de service.
-            </p>
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>Note de candidature · Responsable Intelligence Artificielle</span>
+    <h1 class="reveal" style="--d:.08s">Cadrer l’IA chez Air Côte d’Ivoire, <em>utile, sûre et mesurée.</em></h1>
+    <p class="lead reveal" style="--d:.16s">Partir des besoins des directions, <strong>prioriser sur des critères explicites, sécuriser avant de déployer</strong> et mesurer chaque résultat avant de décider de la suite. Voici la méthode que j’appliquerais dès la prise de poste.</p>
+    <div class="hero-cta reveal" style="--d:.24s">
+      <a class="btn btn-light" href="#cas-usage">Tester le simulateur
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#plan">Plan des 100 jours</a>
+    </div>
+    <div class="stats reveal" style="--d:.32s">
+      <div class="stat"><b data-count="100">100</b><span>jours pour poser le cadre et livrer un premier résultat</span></div>
+      <div class="stat"><b data-count="5">5</b><span>cas d’usage notés avec la même grille</span></div>
+      <div class="stat"><b data-count="3">3</b><span>niveaux de données dans le projet de charte</span></div>
+      <div class="stat"><b data-count="15">15</b><span>plateformes métier que j’ai pilotées jusqu’en production</span></div>
+    </div>
+  </div>
+</div>
 
-            <div class="hero-principles">
-                <div class="principle-item">
-                    <div class="principle-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                    </div>
-                    <div class="principle-text">
-                        <h4>Posture de Chef d'Orchestre</h4>
-                        <p>Recueil des besoins, cahiers des charges clairs et pilotage rigoureux des prestataires/éditeurs.</p>
-                    </div>
-                </div>
+<!-- ================= OFFRE ================= -->
+<section id="offre">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Lecture de l’offre</span>
+      <h2>Chaque mission du poste trouve sa réponse dans cette note</h2>
+      <p>Les cinq blocs de missions de l’offre, et ce que je propose pour chacun. Cliquez pour aller à la section.</p>
+    </div>
+    <div class="map">
+      <a class="map-row reveal" href="#plan">
+        <div class="from"><small>Mission 1</small><b>Pilotage de la stratégie IA</b></div>
+        <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="to">Plan d’action annuel (priorités, budget, jalons), reporting mensuel à la DSI et trimestriel à la Direction Générale, veille réglementaire.</div>
+        <span class="go">100 jours</span>
+      </a>
+      <a class="map-row reveal" href="#cas-usage" style="--d:.05s">
+        <div class="from"><small>Mission 2</small><b>Identification et priorisation des cas d’usage</b></div>
+        <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="to">Grille valeur, faisabilité, données et risque ; cinq cas couvrant opérations, maintenance, commercial, finance et fonctions support ; portefeuille classé.</div>
+        <span class="go">Cas d’usage</span>
+      </a>
+      <a class="map-row reveal" href="#plan" style="--d:.1s">
+        <div class="from"><small>Mission 3</small><b>Coordination des projets IA</b></div>
+        <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="to">Cahiers des charges, consultation des prestataires avec la DSI et les achats, mesure avant et après chaque pilote, décision de poursuite ou d’arrêt avec le métier.</div>
+        <span class="go">100 jours</span>
+      </a>
+      <a class="map-row reveal" href="#gouvernance" style="--d:.15s">
+        <div class="from"><small>Mission 4</small><b>Gouvernance, sécurité et conformité</b></div>
+        <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="to">Projet de charte, classification des données, encadrement de Copilot, loi n° 2013-450 et ARTCI, ISO/IEC 42001, évaluation des fournisseurs avec le RSSI.</div>
+        <span class="go">Gouvernance</span>
+      </a>
+      <a class="map-row reveal" href="#acculturation" style="--d:.2s">
+        <div class="from"><small>Mission 5</small><b>Acculturation et accompagnement du changement</b></div>
+        <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="to">Réseau de référents par direction, ateliers par métier, guide pratique Copilot, retours d’expérience trimestriels.</div>
+        <span class="go">Acculturation</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-                <div class="principle-item">
-                    <div class="principle-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div class="principle-text">
-                        <h4>Culture du Risque & Conformité</h4>
-                        <p>Étanchéité des données confidentielles, conformité légale (loi 2013-450) et collaboration étroite avec le RSSI.</p>
-                    </div>
-                </div>
-
-                <div class="principle-item">
-                    <div class="principle-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                    </div>
-                    <div class="principle-text">
-                        <h4>Acculturation & Copilot M365</h4>
-                        <p>Formation des équipes, animation d'un réseau de référents métiers et cadre clair pour les outils du quotidien.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 1 : Feuille de route 100 jours -->
-        <section id="100jours" class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Prise de fonction</span>
-                <h3>Plan d'action des 100 premiers jours</h3>
-                <p>Une méthode progressive pour instaurer la confiance avec les directions, poser un cadre de gouvernance sécurisé et délivrer rapidement un premier succès tangible (Quick Win).</p>
-            </div>
-
-            <div class="timeline-container">
-                <div class="timeline-grid">
-                    <!-- Jours 1 - 30 -->
-                    <div class="step-card step-1">
-                        <span class="step-badge">Jours 1 à 30</span>
-                        <h4>Écoute & Cartographie</h4>
-                        <ul class="step-list">
-                            <li>Entretiens d'immersion avec chaque direction (Opérations, MRO, Commercial, RH, Finance).</li>
-                            <li>État des lieux avec le DSI et le RSSI sur la maturité des données et l'infrastructure actuelle.</li>
-                            <li>Inventaire des usages informels ou existants de l'IA (notamment Microsoft 365 Copilot).</li>
-                        </ul>
-                        <div class="step-deliverable">
-                            <span>Livrable clé</span>
-                            Rapport d'état des lieux & Registre initial des besoins métiers.
-                        </div>
-                    </div>
-
-                    <!-- Jours 31 - 60 -->
-                    <div class="step-card step-2">
-                        <span class="step-badge">Jours 31 à 60</span>
-                        <h4>Cadrage & Gouvernance</h4>
-                        <ul class="step-list">
-                            <li>Co-rédaction de la Charte d'usage de l'IA d'entreprise avec le RSSI et le juridique.</li>
-                            <li>Priorisation collégiale du portefeuille de projets (Matrice Valeur / Faisabilité / Données).</li>
-                            <li>Désignation des Référents IA au sein de chaque direction métier.</li>
-                        </ul>
-                        <div class="step-deliverable">
-                            <span>Livrable clé</span>
-                            Charte IA d'entreprise validée + Portefeuille priorisé soumis à la DG.
-                        </div>
-                    </div>
-
-                    <!-- Jours 61 - 90 -->
-                    <div class="step-card step-3">
-                        <span class="step-badge">Jours 61 à 90</span>
-                        <h4>1er Projet Pilote (PoC)</h4>
-                        <ul class="step-list">
-                            <li>Lancement du premier projet pilote ciblé avec les équipes du métier sélectionné.</li>
-                            <li>Rédaction du cahier des charges et encadrement du prestataire/solution retenue.</li>
-                            <li>Premiers ateliers de sensibilisation pour les collaborateurs et formation des référents.</li>
-                        </ul>
-                        <div class="step-deliverable">
-                            <span>Livrable clé</span>
-                            PoC en phase de test utilisateur + Guide d'usage Microsoft 365 Copilot.
-                        </div>
-                    </div>
-
-                    <!-- Jours 91 - 100+ -->
-                    <div class="step-card step-4">
-                        <span class="step-badge">Jours 91 à 100+</span>
-                        <h4>Bilan & Feuille de route</h4>
-                        <ul class="step-list">
-                            <li>Évaluation mesurée des résultats du pilote (gain de temps, satisfaction, ROI préliminaire).</li>
-                            <li>Décision formalisée de passage à l'échelle ou d'ajustement.</li>
-                            <li>Présentation de la feuille de route annuelle à la DSI et à la Direction Générale.</li>
-                        </ul>
-                        <div class="step-deliverable">
-                            <span>Livrable clé</span>
-                            Plan d'action annuel chiffré & Tableau de bord de pilotage IA.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2 : Cas d'usage & Matrice de Priorisation -->
-        <section id="cas-usage" class="usecases-section">
-            <div class="section-header">
-                <span class="section-tag">Portefeuille de projets</span>
-                <h3>5 Cas d'usage métiers prioritaires (Hypothèses de travail)</h3>
-                <p>Ces cas d'usage constituent des pistes structurées à confronter aux réalités du terrain et aux arbitrages des directeurs métiers.</p>
-            </div>
-
-            <div class="disclaimer-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <div>
-                    <strong>Principe de méthode :</strong> Ces fiches sont des propositions de cadrage. Chaque projet ne sera engagé qu'après validation de l'accessibilité des données, de l'accord du métier et de la conformité sécuritaire du RSSI.
-                </div>
-            </div>
-
-            <div class="filters-toolbar">
-                <button class="filter-btn active" onclick="filterCards('all')">Tous les cas (5)</button>
-                <button class="filter-btn" onclick="filterCards('commercial')">Commercial & Service Client</button>
-                <button class="filter-btn" onclick="filterCards('operations')">Opérations & Maintenance</button>
-                <button class="filter-btn" onclick="filterCards('support')">Finance, RH & Support</button>
-            </div>
-
-            <div class="cards-grid">
-                <!-- Cas 1 : Réclamations Passagers -->
-                <div class="uc-card" data-category="commercial">
-                    <div>
-                        <div class="uc-meta">
-                            <span class="uc-dept">Commercial & Service Client</span>
-                            <span class="uc-status">Candidat Quick Win</span>
-                        </div>
-                        <h4>Assistance au traitement des réclamations passagers & bagages</h4>
-                        <p class="uc-desc">Triage automatique des emails et formulaires réclamations, détection de l'urgence/sentiment, extraction des numéros de vol/PIR et proposition de réponses pré-rédigées aux agents du service client.</p>
-                        
-                        <div class="uc-scoring">
-                            <div class="score-col">
-                                <span>Valeur Métier</span>
-                                <strong class="score-high">Élevée (Gain temps)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Faisabilité</span>
-                                <strong class="score-high">Rapide (NLP/RAG)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Données</span>
-                                <strong class="score-med">Moyenne (Textes)</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uc-details">
-                        <p><strong>Garde-fou :</strong> Validation humaine systématique par l'agent avant envoi ; anonymisation des données personnelles.</p>
-                        <p><strong>KPI mesurable :</strong> Réduction de 40% du délai moyen de traitement des réclamations.</p>
-                    </div>
-                </div>
-
-                <!-- Cas 2 : Anticipation Retards -->
-                <div class="uc-card" data-category="operations">
-                    <div>
-                        <div class="uc-meta">
-                            <span class="uc-dept">Opérations de Vol & Sol</span>
-                            <span class="uc-status">Projet Stratégique</span>
-                        </div>
-                        <h4>Aide à l'anticipation des retards et gestion des escales</h4>
-                        <p class="uc-desc">Agrégation des données météo, des créneaux aéroportuaires et des rotations des appareils pour alerter le centre de contrôle opérationnel (OCC) sur les risques d'effet domino sur la journée.</p>
-                        
-                        <div class="uc-scoring">
-                            <div class="score-col">
-                                <span>Valeur Métier</span>
-                                <strong class="score-high">Très Élevée (Ponctualité)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Faisabilité</span>
-                                <strong class="score-med">Moyenne (Intégration)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Données</span>
-                                <strong class="score-med">Multi-sources</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uc-details">
-                        <p><strong>Garde-fou :</strong> Outil d'aide à la décision consultative, autorité décisionnelle restant 100% à l'OCC.</p>
-                        <p><strong>KPI mesurable :</strong> Amélioration de l'On-Time Performance (OTP) et réduction des coûts d'assistance escale.</p>
-                    </div>
-                </div>
-
-                <!-- Cas 3 : Maintenance MRO -->
-                <div class="uc-card" data-category="operations">
-                    <div>
-                        <div class="uc-meta">
-                            <span class="uc-dept">Maintenance Aéronautique (MRO)</span>
-                            <span class="uc-status">Assistance Technique</span>
-                        </div>
-                        <h4>Moteur de recherche sémantique dans la documentation technique</h4>
-                        <p class="uc-desc">Assistant de recherche sécurisé permettant aux ingénieurs et techniciens de retrouver instantanément les procédures, historiques de pannes et consignes constructeurs dans des milliers de pages de manuels.</p>
-                        
-                        <div class="uc-scoring">
-                            <div class="score-col">
-                                <span>Valeur Métier</span>
-                                <strong class="score-high">Élevée (Efficacité)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Faisabilité</span>
-                                <strong class="score-high">Élevée (RAG Documentaire)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Données</span>
-                                <strong class="score-high">Excellente (PDFs structurés)</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uc-details">
-                        <p><strong>Garde-fou :</strong> Citations systématiques des chapitres et pages sources du manuel officiel sans hallucination permise.</p>
-                        <p><strong>KPI mesurable :</strong> Division par 3 du temps de diagnostic et fiabilisation des références pièces.</p>
-                    </div>
-                </div>
-
-                <!-- Cas 4 : Contrôle Facturation Escales -->
-                <div class="uc-card" data-category="support">
-                    <div>
-                        <div class="uc-meta">
-                            <span class="uc-dept">Direction Financière & Achats</span>
-                            <span class="uc-status">Optimisation des Coûts</span>
-                        </div>
-                        <h4>Contrôle automatisé des factures d'assistance en escale</h4>
-                        <p class="uc-desc">Rapprochement intelligent entre les prestations réelles enregistrées par les équipages (carburant, catering, handling) et les factures transmises par les aéroports et prestataires régionaux.</p>
-                        
-                        <div class="uc-scoring">
-                            <div class="score-col">
-                                <span>Valeur Métier</span>
-                                <strong class="score-high">Élevée (Économies nettes)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Faisabilité</span>
-                                <strong class="score-high">Élevée (OCR + Règles)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Données</span>
-                                <strong class="score-high">ERP / Bons de livraison</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uc-details">
-                        <p><strong>Garde-fou :</strong> Détection d'anomalies signalées à un contrôleur financier qui garde la validation comptable.</p>
-                        <p><strong>KPI mesurable :</strong> Détection précoce des sur-facturations et réduction du délai de clôture.</p>
-                    </div>
-                </div>
-
-                <!-- Cas 5 : Copilot M365 Transverse -->
-                <div class="uc-card" data-category="support">
-                    <div>
-                        <div class="uc-meta">
-                            <span class="uc-dept">RH & Fonctions Transverses</span>
-                            <span class="uc-status">Adoption Immédiate</span>
-                        </div>
-                        <h4>Cadrage & accompagnement à l'usage de Microsoft 365 Copilot</h4>
-                        <p class="uc-desc">Structurer l'usage de Copilot pour les tâches administratives quotidiennes (synthèse de réunions Teams, rédaction de notes, recherche documentaire interne), avec un contrôle strict des accès.</p>
-                        
-                        <div class="uc-scoring">
-                            <div class="score-col">
-                                <span>Valeur Métier</span>
-                                <strong class="score-med">Productivité globale</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Faisabilité</span>
-                                <strong class="score-high">Immédiate (Outil en place)</strong>
-                            </div>
-                            <div class="score-col">
-                                <span>Données</span>
-                                <strong class="score-med">Auditer les droits SharePoint</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uc-details">
-                        <p><strong>Garde-fou :</strong> Audit préalable des permissions documentaires pour éviter qu'un utilisateur n'accède à des données RH/salaires.</p>
-                        <p><strong>KPI mesurable :</strong> 80% des utilisateurs formés appliquant les règles de confidentialité.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Simulateur d'arbitrage de cas d'usage -->
-            <div class="simulator-box">
-                <div class="sim-header">
-                    <h4>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
-                        Simulateur d'Arbitrage & Priorisation de Cas d'Usage
-                    </h4>
-                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem;">
-                        Illustration de la méthode d'évaluation multicritères pour éclairer les arbitrages de la DSI et de la Direction Générale.
-                    </p>
-                </div>
-
-                <div class="sim-grid">
-                    <div class="sim-controls">
-                        <div class="control-group">
-                            <label for="simPreset">Cas d'usage préconfiguré</label>
-                            <select id="simPreset" onchange="loadPreset()">
-                                <option value="reclamations" selected>Cas 1 : Réclamations passagers (Commercial/Client)</option>
-                                <option value="retards">Cas 2 : Anticipation retards & escales (Opérations)</option>
-                                <option value="mro">Cas 3 : Recherche sémantique manuels (Maintenance)</option>
-                                <option value="escales">Cas 4 : Contrôle factures handling (Finance)</option>
-                                <option value="copilot">Cas 5 : Cadrage Copilot M365 (Transverse)</option>
-                                <option value="custom">-- Personnalisé / Nouveau besoin métier --</option>
-                            </select>
-                        </div>
-
-                        <div class="control-group">
-                            <label>Valeur métier & ROI attendu : <span id="valLabel">8/10</span></label>
-                            <input type="range" id="valRange" min="1" max="10" value="8" oninput="calculateScore()">
-                        </div>
-
-                        <div class="control-group">
-                            <label>Faisabilité technique & maturité solution : <span id="faisLabel">8/10</span></label>
-                            <input type="range" id="faisRange" min="1" max="10" value="8" oninput="calculateScore()">
-                        </div>
-
-                        <div class="control-group">
-                            <label>Disponibilité & qualité des données internes : <span id="dataLabel">6/10</span></label>
-                            <input type="range" id="dataRange" min="1" max="10" value="6" oninput="calculateScore()">
-                        </div>
-
-                        <div class="control-group">
-                            <label for="riskSelect">Sensibilité des données & Risque</label>
-                            <select id="riskSelect" onchange="calculateScore()">
-                                <option value="low">Faible / Données publiques ou techniques constructeur</option>
-                                <option value="med" selected>Modéré / Données internes non confidentielles</option>
-                                <option value="high">Élevé / Données passagers (PII) ou données critiques de vol</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="sim-result-card">
-                        <div class="score-circle" id="scoreCircle">
-                            <div class="score-number" id="scoreDisplay">76</div>
-                            <div class="score-unit">Score / 100</div>
-                        </div>
-
-                        <div class="decision-badge decision-quickwin" id="decisionBadge">
-                            Priorité 1 : Candidat Quick Win
-                        </div>
-
-                        <div class="decision-rationale" id="decisionRationale">
-                            <strong>Recommandation managériale :</strong> Projet à fort retour sur investissement et faisabilité rapide. Recommandé pour un projet pilote (PoC 30 à 45 jours) afin d'engager les équipes et créer une dynamique positive.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3 : Gouvernance & Charte d'usage -->
-        <section id="gouvernance" class="governance-section">
-            <div class="section-header">
-                <span class="section-tag">Conformité & Maîtrise</span>
-                <h3>Cadre de Gouvernance & Projet de Charte IA</h3>
-                <p>Garantir que l'innovation s'exécute dans un cadre strict de protection du patrimoine informationnel, en liaison continue avec le RSSI et la DSI.</p>
-            </div>
-
-            <div class="gov-grid">
-                <!-- Charte d'usage -->
-                <div class="charter-card">
-                    <h4>Les 5 Principes Clés de la Charte d'Usage Collaborateurs</h4>
-                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem;">Règles pragmatiques à diffuser largement auprès de l'ensemble du personnel.</p>
-
-                    <div class="charter-rules">
-                        <div class="rule-item">
-                            <div class="rule-num">1</div>
-                            <div class="rule-content">
-                                <h5>Zéro donnée confidentielle dans les outils publics</h5>
-                                <p>Interdiction absolue d'injecter des données passagers (noms, passeports, paiements), des données de vol sensibles ou des documents stratégiques dans des IA grand public non contractualisées.</p>
-                            </div>
-                        </div>
-
-                        <div class="rule-item">
-                            <div class="rule-num">2</div>
-                            <div class="rule-content">
-                                <h5>Responsabilité humaine obligatoire (Human in the loop)</h5>
-                                <p>L'IA produit des ébauches et des analyses d'aide à la décision. L'arbitrage final, la signature et la communication restent sous l'entière responsabilité du collaborateur.</p>
-                            </div>
-                        </div>
-
-                        <div class="rule-item">
-                            <div class="rule-num">3</div>
-                            <div class="rule-content">
-                                <h5>Utilisation exclusive des outils homologués</h5>
-                                <p>Seuls les outils validés par la DSI et le RSSI (comme Microsoft 365 Copilot avec tenant sécurisé) sont autorisés pour le traitement des informations professionnelles.</p>
-                            </div>
-                        </div>
-
-                        <div class="rule-item">
-                            <div class="rule-num">4</div>
-                            <div class="rule-content">
-                                <h5>Vigilance sur les biais et les hallucinations</h5>
-                                <p>Tout collaborateur utilisant l'IA doit vérifier systématiquement l'exactitude des chiffres, des dates et des références techniques citées.</p>
-                            </div>
-                        </div>
-
-                        <div class="rule-item">
-                            <div class="rule-num">5</div>
-                            <div class="rule-content">
-                                <h5>Transparence et déclaration des cas d'usage</h5>
-                                <p>Toute initiative d'automatisation ou d'intégration d'un nouvel outil d'IA doit être déclarée au Responsable IA pour évaluation sécuritaire préalable.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Classification des données -->
-                <div class="data-tier-card">
-                    <h4>Classification des Données & Éligibilité IA</h4>
-                    <p style="font-size: 0.85rem; color: var(--slate-600); margin-top: 0.25rem; margin-bottom: 1.25rem;">Grille de lecture pour les chefs de projet et référents métiers.</p>
-
-                    <div class="tier-row tier-public">
-                        <div class="tier-header">
-                            <h5>Niveau 1 : Données Publiques</h5>
-                            <span class="tier-tag">Traitement Libre</span>
-                        </div>
-                        <p>Horaires publics, communiqués de presse, catalogues tarifaires officiels, conditions générales de vente. Usage possible sur tout modèle IA autorisé.</p>
-                    </div>
-
-                    <div class="tier-row tier-internal">
-                        <div class="tier-header">
-                            <h5>Niveau 2 : Données Internes Opérationnelles</h5>
-                            <span class="tier-tag">Environnement Fermé</span>
-                        </div>
-                        <p>Notes de service, manuels techniques non critiques, procédures internes. Traitement réservé à Microsoft 365 Copilot (tenant Air CI) ou modèles hébergés dédiés.</p>
-                    </div>
-
-                    <div class="tier-row tier-restricted">
-                        <div class="tier-header">
-                            <h5>Niveau 3 : Données Confidentielles & Passagers</h5>
-                            <span class="tier-tag">Haute Sécurité / Soumis à accord RSSI</span>
-                        </div>
-                        <p>Données à caractère personnel des passagers (PII), données salariales/RH, contrats d'achats stratégiques, télémétrie critique de vol. Traitement IA interdit sans chiffrement, anonymisation stricte et validation écrite DSI/RSSI (Loi 2013-450).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4 : Acculturation & Réseau des Référents -->
-        <section id="acculturation" class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Facteur humain</span>
-                <h3>Acculturation & Conduite du Changement</h3>
-                <p>L'intelligence artificielle n'a d'impact que si les collaborateurs se l'approprient en confiance et avec discernement.</p>
-            </div>
-
-            <div class="culture-section">
-                <div class="culture-grid">
-                    <div class="culture-box">
-                        <h4>1. Réseau des Référents Métiers</h4>
-                        <p>Identifier un point focal dans chaque direction (Opérations, Technique, Commercial, RH, Finance) pour remonter les besoins réels et servir de relais de bonnes pratiques sur le terrain.</p>
-                    </div>
-
-                    <div class="culture-box">
-                        <h4>2. Ateliers Pratiques « Découverte & Prompts »</h4>
-                        <p>Sessions courtes (45 min) par direction sur des cas concrets de leur quotidien, axées sur la formulation de requêtes efficaces et le respect des règles de confidentialité.</p>
-                    </div>
-
-                    <div class="culture-box">
-                        <h4>3. Guide Pratique Microsoft 365 Copilot</h4>
-                        <p>Mise à disposition d'un mémo illustré avec des exemples prêts à l'emploi (synthétiser une réunion Teams, trier des notes de frais, rédiger un compte rendu).</p>
-                    </div>
-
-                    <div class="culture-box">
-                        <h4>4. Partage des Retours d'Expérience (REX)</h4>
-                        <p>Publication trimestrielle des réussites concrètes obtenues par les équipes pour valoriser les initiatives positives et dédramatiser l'usage de la technologie.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5 : Profil du Candidat & Contact -->
-        <section id="contact" class="section-container">
-            <div class="profile-card">
-                <div class="profile-left">
-                    <div class="profile-avatar-large">CA</div>
-                    <div class="profile-summary">
-                        <h3>Clarje Epiphane ANOUMAN</h3>
-                        <div class="role">Candidat au poste de Responsable Intelligence Artificielle</div>
-                        <p>
-                            Chef de projet digital ayant piloté et déployé plus de 15 plateformes métier en production. Alliant une culture éprouvée de la gestion des risques et de la conformité à une solide expérience de formateur et d'animateur d'équipes, je propose une démarche structurée, pragmatique et centrée sur la valeur métier pour accompagner la transformation d'Air Côte d'Ivoire.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="profile-actions">
-                    <a href="mailto:anoumanclarje@gmail.com" class="btn btn-primary">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        anoumanclarje@gmail.com
-                    </a>
-                    <a href="tel:+2250789580439" class="btn btn-outline">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                        07 89 58 04 39 / 01 60 15 22 81
-                    </a>
-                    <a href="https://linkedin.com/in/clarje-epiphane-anouman-49a2113a0" target="_blank" rel="noopener" class="btn btn-outline">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        Profil LinkedIn
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>Document de synthèse élaboré par Clarje Epiphane ANOUMAN dans le cadre de sa candidature au poste de Responsable IA.</p>
-            <p style="margin-top: 0.35rem; color: var(--slate-400);">Abidjan, Côte d'Ivoire · Novembre 2026 · Conçu pour impression et consultation sur tout appareil.</p>
-        </footer>
-
+<!-- ================= 100 JOURS ================= -->
+<section id="plan" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Prise de fonction</span>
+      <h2>Plan des 100 premiers jours</h2>
+      <p>Écouter avant de proposer, poser le cadre avant de déployer, et obtenir un premier résultat visible avec un outil déjà en place, pendant que le premier projet métier suit le circuit normal des achats.</p>
     </div>
 
-    <!-- Scripts interactifs -->
-    <script>
-        function filterCards(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
+    <div class="timeline" id="timeline">
+      <div class="fill" aria-hidden="true"></div>
+      <article class="step reveal">
+        <div class="node" style="--nd:.2s" aria-hidden="true">1</div>
+        <div class="body">
+          <span class="when">Jours 1 à 30</span>
+          <h3>Écoute et état des lieux</h3>
+          <ul>
+            <li>Entretiens avec chaque direction : opérations aériennes, maintenance, commercial et revenue management, service client, finance, RH.</li>
+            <li>État des lieux avec la DSI et le RSSI : données disponibles, outils, contrats, licences Microsoft 365.</li>
+            <li>Inventaire des usages de l’IA déjà en place, y compris non déclarés.</li>
+          </ul>
+          <div class="deliv"><span>Livrable</span>Rapport d’état des lieux et registre initial des besoins.</div>
+        </div>
+      </article>
+      <article class="step reveal" style="--d:.1s">
+        <div class="node" style="--nd:.6s" aria-hidden="true">2</div>
+        <div class="body">
+          <span class="when">Jours 31 à 60</span>
+          <h3>Cadre et priorités</h3>
+          <ul>
+            <li>Rédaction de la charte d’usage avec le RSSI et le juridique.</li>
+            <li>Notation des cas d’usage et arbitrage avec les directions.</li>
+            <li>Désignation d’un référent IA dans chaque direction.</li>
+          </ul>
+          <div class="deliv"><span>Livrable</span>Charte soumise à validation et portefeuille priorisé présenté à la Direction.</div>
+        </div>
+      </article>
+      <article class="step reveal" style="--d:.2s">
+        <div class="node" style="--nd:1s" aria-hidden="true">3</div>
+        <div class="body">
+          <span class="when">Jours 61 à 90</span>
+          <h3>Premier résultat visible</h3>
+          <ul>
+            <li>Copilot encadré sur un groupe pilote, après revue des droits d’accès avec le RSSI.</li>
+            <li>Formation des référents, premiers ateliers ; mesure de la situation de départ.</li>
+            <li>Cahier des charges du premier pilote métier retenu.</li>
+          </ul>
+          <div class="deliv"><span>Livrable</span>Guide Copilot, groupe pilote actif, cahier des charges du pilote métier.</div>
+        </div>
+      </article>
+      <article class="step reveal" style="--d:.3s">
+        <div class="node" style="--nd:1.4s" aria-hidden="true">4</div>
+        <div class="body">
+          <span class="when">Jours 91 à 100+</span>
+          <h3>Bilan et feuille de route</h3>
+          <ul>
+            <li>Bilan du groupe pilote : usages réels, temps gagné déclaré, incidents ; extension ou ajustement.</li>
+            <li>Consultation des prestataires pour le pilote métier, avec la DSI et les achats.</li>
+            <li>Présentation du plan d’action annuel à la DSI et à la Direction Générale.</li>
+          </ul>
+          <div class="deliv"><span>Livrable</span>Plan d’action annuel (priorités, budget, jalons) et premier tableau de bord IA.</div>
+        </div>
+      </article>
+    </div>
 
-            const cards = document.querySelectorAll('.uc-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+    <div class="reporting reveal">
+      <h3>Reporting à la Direction<small>Mensuel à la DSI, trimestriel à la Direction Générale. Cinq rubriques, une page.</small></h3>
+      <div class="kpis">
+        <div class="kpi"><b>Portefeuille</b><span>Cas d’usage par statut : idée, cadrage, pilote, production, arrêté.</span></div>
+        <div class="kpi"><b>Budget</b><span>Engagé et consommé par rapport au plan annuel.</span></div>
+        <div class="kpi"><b>Résultats</b><span>Gains mesurés de chaque pilote par rapport au départ.</span></div>
+        <div class="kpi"><b>Adoption</b><span>Utilisateurs actifs, personnes formées, référents actifs.</span></div>
+        <div class="kpi"><b>Risques</b><span>Écarts à la charte, incidents, points ouverts avec le RSSI.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Données des cas d'usage prédéfinis
-        const presets = {
-            reclamations: { val: 8, fais: 8, data: 6, risk: 'med' },
-            retards: { val: 9, fais: 6, data: 6, risk: 'med' },
-            mro: { val: 8, fais: 8, data: 9, risk: 'low' },
-            escales: { val: 8, fais: 7, data: 8, risk: 'low' },
-            copilot: { val: 7, fais: 9, data: 6, risk: 'med' }
-        };
+<!-- ================= CAS D'USAGE ================= -->
+<section id="cas-usage">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Portefeuille</span>
+      <h2>Cinq cas d’usage à valider avec les directions</h2>
+      <p>Des hypothèses de travail construites à partir d’informations publiques. Les fiches, le classement et le simulateur utilisent les mêmes notes et la même formule.</p>
+    </div>
 
-        function loadPreset() {
-            const presetKey = document.getElementById('simPreset').value;
-            if (presetKey === 'custom') return;
+    <div class="notice reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p><b>Principe de méthode :</b> aucun projet n’est engagé sans accord du métier, données accessibles et avis du RSSI. Aucune cible chiffrée n’est fixée avant d’avoir mesuré la situation de départ.</p>
+    </div>
 
-            const p = presets[presetKey];
-            if (p) {
-                document.getElementById('valRange').value = p.val;
-                document.getElementById('faisRange').value = p.fais;
-                document.getElementById('dataRange').value = p.data;
-                document.getElementById('riskSelect').value = p.risk;
-                calculateScore();
-            }
-        }
+    <div class="chips reveal" role="group" aria-label="Filtrer les cas d’usage">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">Tous (5)</button>
+      <button class="chip" type="button" data-filter="commercial" aria-pressed="false">Commercial & service client</button>
+      <button class="chip" type="button" data-filter="operations" aria-pressed="false">Opérations & maintenance</button>
+      <button class="chip" type="button" data-filter="support" aria-pressed="false">Finance & transverse</button>
+    </div>
 
-        function calculateScore() {
-            const val = parseInt(document.getElementById('valRange').value, 10);
-            const fais = parseInt(document.getElementById('faisRange').value, 10);
-            const data = parseInt(document.getElementById('dataRange').value, 10);
-            const risk = document.getElementById('riskSelect').value;
+    <div class="cases" id="cases">
+      <article class="case card reveal" data-cat="support" data-key="copilot">
+        <div class="case-top"><span class="dept">Toutes directions</span><span class="prio" data-prio></span></div>
+        <h3>Encadrer et généraliser Microsoft 365 Copilot</h3>
+        <p class="desc">L’outil est déjà disponible : en faire un usage maîtrisé pour les tâches courantes (synthèse de réunions Teams, comptes rendus, recherche dans les documents internes).</p>
+        <div class="meters" data-meters></div>
+        <div class="risk" data-risk></div>
+        <details>
+          <summary>Risque, garde-fou et indicateur <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="more">
+            <p><b>Risque principal :</b> Copilot voit tout ce que l’utilisateur peut ouvrir. Un partage SharePoint trop large exposerait des documents RH ou financiers.</p>
+            <p><b>Garde-fou :</b> revue des droits d’accès avec le RSSI avant d’étendre, puis déploiement par groupes.</p>
+            <p><b>Indicateur :</b> utilisateurs actifs (rapports d’usage Microsoft 365), temps gagné déclaré, incidents liés aux droits d’accès.</p>
+          </div>
+        </details>
+      </article>
 
-            document.getElementById('valLabel').textContent = val + '/10';
-            document.getElementById('faisLabel').textContent = fais + '/10';
-            document.getElementById('dataLabel').textContent = data + '/10';
+      <article class="case card reveal" style="--d:.05s" data-cat="commercial" data-key="reclamations">
+        <div class="case-top"><span class="dept">Commercial & service client</span><span class="prio" data-prio></span></div>
+        <h3>Aide au traitement des réclamations passagers et bagages</h3>
+        <p class="desc">Tri des e-mails et formulaires, détection de l’urgence, extraction du numéro de vol et du dossier bagage (PIR), proposition de réponse que l’agent relit et modifie.</p>
+        <div class="meters" data-meters></div>
+        <div class="risk" data-risk></div>
+        <details>
+          <summary>Conditions, garde-fou et indicateur <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="more">
+            <p><b>Pourquoi pas tout de suite :</b> les réclamations contiennent des données personnelles de passagers (niveau 3 de la charte). Analyse d’impact, formalités ARTCI et hébergement validé par le RSSI d’abord.</p>
+            <p><b>Garde-fou :</b> aucune réponse envoyée sans validation de l’agent.</p>
+            <p><b>Indicateur :</b> délai moyen de traitement, mesuré avant le pilote ; cible fixée ensuite avec le service client.</p>
+          </div>
+        </details>
+      </article>
 
-            // Formule de calcul pondérée
-            // Valeur (40%), Faisabilité (30%), Maturité données (30%)
-            let rawScore = Math.round((val * 0.40 + fais * 0.30 + data * 0.30) * 10);
+      <article class="case card reveal" style="--d:.1s" data-cat="operations" data-key="retards">
+        <div class="case-top"><span class="dept">Opérations aériennes</span><span class="prio" data-prio></span></div>
+        <h3>Anticipation des retards en cascade</h3>
+        <p class="desc">Croiser météo, programme des vols et rotations des appareils pour signaler au centre de contrôle des opérations (OCC) les retards susceptibles de se propager sur la journée.</p>
+        <div class="meters" data-meters></div>
+        <div class="risk" data-risk></div>
+        <details>
+          <summary>Conditions, garde-fou et indicateur <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="more">
+            <p><b>Pourquoi c’est long :</b> dépend de l’intégration avec les outils d’exploitation existants et de l’historique de ponctualité disponible.</p>
+            <p><b>Garde-fou :</b> outil d’alerte uniquement ; la décision reste entièrement à l’OCC.</p>
+            <p><b>Indicateur :</b> ponctualité à 15 minutes (OTP) et minutes de retard propagé, comparées à la situation de départ.</p>
+          </div>
+        </details>
+      </article>
 
-            let penalty = 0;
-            if (risk === 'high') {
-                penalty = 12; // Pénalité de complexité réglementaire & sécurité
-            } else if (risk === 'med') {
-                penalty = 4;
-            }
+      <article class="case card reveal" data-cat="operations" data-key="mro">
+        <div class="case-top"><span class="dept">Maintenance</span><span class="prio" data-prio></span></div>
+        <h3>Recherche dans la documentation technique</h3>
+        <p class="desc">Aider techniciens et ingénieurs à retrouver plus vite une procédure, un historique de panne ou une consigne, avec renvoi systématique au document source.</p>
+        <div class="meters" data-meters></div>
+        <div class="risk" data-risk></div>
+        <details>
+          <summary>Conditions, garde-fou et indicateur <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="more">
+            <p><b>À vérifier d’abord :</b> conditions de licence des documents constructeurs et position de la Qualité et de la navigabilité.</p>
+            <p><b>Garde-fou :</b> outil de recherche, pas de référence. Chaque réponse cite chapitre, page et révision ; la documentation officielle à jour fait seule foi pour toute intervention.</p>
+            <p><b>Indicateur :</b> temps de recherche documentaire par intervention, mesuré avant et après sur un panel de techniciens.</p>
+          </div>
+        </details>
+      </article>
 
-            let finalScore = Math.max(10, Math.min(99, rawScore - penalty));
+      <article class="case card reveal" style="--d:.05s" data-cat="support" data-key="escales">
+        <div class="case-top"><span class="dept">Finance & achats</span><span class="prio" data-prio></span></div>
+        <h3>Contrôle des factures d’escale</h3>
+        <p class="desc">Rapprocher les factures des aéroports et prestataires (carburant, handling, catering) avec les justificatifs des escales : bons de carburant, bons d’assistance, états de commissariat.</p>
+        <div class="meters" data-meters></div>
+        <div class="risk" data-risk></div>
+        <details>
+          <summary>Conditions, garde-fou et indicateur <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="more">
+            <p><b>Condition :</b> justificatifs des escales numérisés et accessibles ; à vérifier escale par escale.</p>
+            <p><b>Garde-fou :</b> l’outil signale les écarts ; le contrôleur de gestion décide et valide.</p>
+            <p><b>Indicateur :</b> montant des écarts détectés et récupérés, délai de validation des factures.</p>
+          </div>
+        </details>
+      </article>
+    </div>
 
-            const scoreDisplay = document.getElementById('scoreDisplay');
-            const scoreCircle = document.getElementById('scoreCircle');
-            const decisionBadge = document.getElementById('decisionBadge');
-            const decisionRationale = document.getElementById('decisionRationale');
+    <div class="lab">
+      <div class="card panel reveal">
+        <h3>Classement du portefeuille</h3>
+        <p class="sub">Calculé en direct avec la formule du simulateur. Cliquez sur un cas pour le charger.</p>
+        <ol class="rank" id="rank"></ol>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--p1)"></i>Priorité 1</span>
+          <span><i style="background:var(--p2)"></i>Priorité 2</span>
+          <span><i style="background:var(--pc)"></i>Sous conditions</span>
+          <span><i style="background:var(--pb)"></i>Non engagé</span>
+        </div>
+      </div>
 
-            scoreDisplay.textContent = finalScore;
+      <div class="card panel reveal" style="--d:.1s" id="simulateur">
+        <h3>Simulateur de priorisation</h3>
+        <p class="sub">La grille que je proposerais pour préparer les arbitrages. Choisissez un cas ou bougez les curseurs pour évaluer un nouveau besoin.</p>
+        <div class="sim">
+          <div>
+            <div class="field">
+              <label for="preset">Cas d’usage</label>
+              <select id="preset"></select>
+            </div>
+            <div class="field">
+              <label for="val">Valeur métier attendue <output for="val" id="valOut">8/10</output></label>
+              <input type="range" id="val" min="1" max="10" value="8">
+            </div>
+            <div class="field">
+              <label for="fais">Faisabilité <output for="fais" id="faisOut">9/10</output></label>
+              <input type="range" id="fais" min="1" max="10" value="9">
+            </div>
+            <div class="field">
+              <label for="data">Données disponibles <output for="data" id="dataOut">7/10</output></label>
+              <input type="range" id="data" min="1" max="10" value="7">
+            </div>
+            <div class="field">
+              <label for="risk">Sensibilité des données</label>
+              <select id="risk">
+                <option value="low">Faible : niveau 1, publiques ou techniques</option>
+                <option value="med" selected>Modérée : niveau 2, internes</option>
+                <option value="high">Élevée : niveau 3, personnelles ou critiques</option>
+              </select>
+            </div>
+          </div>
+          <div class="result" aria-live="polite">
+            <div class="ring">
+              <svg width="132" height="132" viewBox="0 0 132 132" aria-hidden="true">
+                <circle class="trk" cx="66" cy="66" r="56" fill="none" stroke-width="10"/>
+                <circle class="val" id="ringVal" cx="66" cy="66" r="56" fill="none" stroke-width="10" stroke-dasharray="351.86" stroke-dashoffset="351.86"/>
+              </svg>
+              <div class="num"><b id="score">77</b><small>sur 100</small></div>
+            </div>
+            <span class="decision" id="decision">Priorité 1 : premier résultat</span>
+            <p class="why" id="why"></p>
+          </div>
+        </div>
+        <p class="method"><b>Formule :</b> valeur × 40 % + faisabilité × 30 % + données × 30 %, moins un malus selon la sensibilité (modérée −3, élevée −15). Un risque élevé ne bloque pas un projet : il impose des conditions préalables.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Logique décisionnelle managériale
-            if (risk === 'high' && data < 6) {
-                scoreCircle.style.borderColor = 'var(--rose)';
-                decisionBadge.className = 'decision-badge decision-blocked';
-                decisionBadge.textContent = 'Projet Bloqué / Risque Élevé';
-                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Données hautement sensibles sans socle data suffisamment robuste. Recommandation : <em>Aucun PoC immédiat</em>. Mettre en place d\'abord les garanties d\'anonymisation et l\'accord formel du RSSI et de l\'ARTCI.';
-            } else if (finalScore >= 75 && fais >= 7) {
-                scoreCircle.style.borderColor = 'var(--emerald)';
-                decisionBadge.className = 'decision-badge decision-quickwin';
-                decisionBadge.textContent = 'Priorité 1 : Candidat Quick Win (PoC 30-45j)';
-                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Excellent ratio valeur/faisabilité. Cas d\'usage idéal pour un premier projet pilote avec les métiers, permettant de démontrer un ROI rapide et d\'acculturer les équipes.';
-            } else if (finalScore >= 65) {
-                scoreCircle.style.borderColor = 'var(--accent)';
-                decisionBadge.className = 'decision-badge decision-strategic';
-                decisionBadge.textContent = 'Priorité 2 : Projet Stratégique Moyen Terme';
-                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Fort potentiel métier mais nécessitant un cadrage approfondi, la rédaction d\'un cahier des charges rigoureux et une consultation de prestataires/éditeurs spécialisés.';
-            } else if (data <= 5) {
-                scoreCircle.style.borderColor = 'var(--amber)';
-                decisionBadge.className = 'decision-badge decision-conditional';
-                decisionBadge.textContent = 'Priorité 3 : Chantier Données Préalable';
-                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> L\'idée métier est prometteuse mais la qualité ou l\'accessibilité des données internes est insuffisante. Recommandation : Engager un travail d\'assainissement des données avant tout projet IA.';
-            } else {
-                scoreCircle.style.borderColor = 'var(--slate-400)';
-                decisionBadge.className = 'decision-badge decision-conditional';
-                decisionBadge.textContent = 'Arbitrage Différé';
-                decisionRationale.innerHTML = '<strong>Avis Managérial :</strong> Valeur métier ou faisabilité trop modeste au vu des priorités annuelles. Projet à consigner dans le registre de veille pour réévaluation ultérieure.';
-            }
-        }
+<!-- ================= GOUVERNANCE ================= -->
+<section id="gouvernance" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Conformité et maîtrise des risques</span>
+      <h2>Gouvernance et projet de charte d’usage</h2>
+      <p>Des règles simples pour les collaborateurs, et un dispositif de maîtrise des risques construit avec le RSSI, la DSI et le juridique.</p>
+    </div>
 
-        // Initialisation
-        window.addEventListener('DOMContentLoaded', () => {
-            calculateScore();
-        });
-    </script>
+    <div class="gov">
+      <div class="card panel reveal">
+        <h3>Cinq règles pour tous les collaborateurs</h3>
+        <ol class="rules">
+          <li><div><b>Aucune donnée confidentielle dans les outils grand public</b><span>Pas de données passagers, de données RH, de données d’exploitation sensibles ni de documents stratégiques dans une IA non autorisée par la compagnie.</span></div></li>
+          <li><div><b>Un humain décide et signe</b><span>L’IA produit des brouillons et des analyses. La décision, la signature et tout envoi restent sous la responsabilité du collaborateur.</span></div></li>
+          <li><div><b>Uniquement les outils autorisés</b><span>Les informations professionnelles ne sont traitées qu’avec les outils validés par la DSI et le RSSI, comme Microsoft 365 Copilot dans l’environnement de la compagnie.</span></div></li>
+          <li><div><b>Toujours vérifier</b><span>L’IA peut se tromper avec assurance. Chiffres, dates, noms et références techniques sont vérifiés à la source avant usage.</span></div></li>
+          <li><div><b>Déclarer avant d’automatiser</b><span>Tout nouvel outil ou toute automatisation utilisant l’IA est signalé au Responsable IA, qui l’évalue avec le RSSI avant mise en service.</span></div></li>
+        </ol>
+      </div>
+
+      <div class="card panel reveal" style="--d:.1s">
+        <h3>Classification des données</h3>
+        <p class="sub" style="margin-bottom:0">La grille qu’utilise le simulateur.</p>
+        <div class="tiers">
+          <div class="tier t1"><header><b>Niveau 1 : données publiques</b><em>Outils autorisés</em></header><p>Horaires publiés, communiqués, tarifs et conditions générales publiés.</p></div>
+          <div class="tier t2"><header><b>Niveau 2 : données internes</b><em>Environnement de la compagnie</em></header><p>Notes de service, procédures, documents de travail. Uniquement dans Microsoft 365 Copilot ou une solution validée par le RSSI.</p></div>
+          <div class="tier t3"><header><b>Niveau 3 : données personnelles et sensibles</b><em>Accord préalable</em></header><p>Données des passagers et des salariés, paie, contrats stratégiques, données critiques pour la sécurité des vols. Usage de l’IA seulement après analyse d’impact, formalités ARTCI (loi n° 2013-450), accord écrit DSI et RSSI, et anonymisation ou pseudonymisation dès que possible.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="card pillar reveal">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <b>Système de management de l’IA (ISO/IEC 42001)</b>
+        <p>Registre des systèmes d’IA, évaluation des risques avant chaque mise en service, responsabilités définies, revue annuelle avec la Direction.</p>
+      </div>
+      <div class="card pillar reveal" style="--d:.06s">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <b>Données personnelles</b>
+        <p>Pour chaque projet : registre des traitements, analyse d’impact si nécessaire, formalités préalables auprès de l’ARTCI préparées avec le juridique.</p>
+      </div>
+      <div class="card pillar reveal" style="--d:.12s">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <b>Fournisseurs d’IA</b>
+        <p>Grille commune avec le RSSI : hébergement des données, non-réutilisation pour l’entraînement, confidentialité, droit d’audit, réversibilité.</p>
+      </div>
+      <div class="card pillar reveal" style="--d:.18s">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <b>Veille réglementaire</b>
+        <p>Loi n° 2013-450, exigences de l’ANAC et des autorités aéronautiques, suivi de l’AI Act européen pour les activités liées à l’Union européenne.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACCULTURATION ================= -->
+<section id="acculturation">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Facteur humain</span>
+      <h2>Acculturation et conduite du changement</h2>
+      <p>Un outil n’apporte rien s’il n’est pas utilisé, ou s’il est mal utilisé. L’objectif : des usages utiles et sûrs dans chaque direction.</p>
+    </div>
+    <div class="adopt">
+      <div class="card reveal"><div class="n">01</div><h3>Réseau de référents</h3><p>Un référent par direction : il fait remonter les besoins, relaie les règles et aide ses collègues. Point mensuel avec le Responsable IA.</p></div>
+      <div class="card reveal" style="--d:.06s"><div class="n">02</div><h3>Ateliers par métier</h3><p>Sessions de 45 minutes sur les tâches réelles de chaque équipe : formuler une demande, vérifier la réponse, savoir quelles données ne jamais saisir.</p></div>
+      <div class="card reveal" style="--d:.12s"><div class="n">03</div><h3>Guide pratique Copilot</h3><p>Exemples prêts à l’emploi : synthèse d’une réunion Teams, compte rendu d’incident, analyse de retours clients, préparation d’une note.</p></div>
+      <div class="card reveal" style="--d:.18s"><div class="n">04</div><h3>Retours d’expérience</h3><p>Chaque trimestre, des résultats concrets obtenus par les équipes, avec ce qui a marché et ce qui n’a pas marché.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROFIL ================= -->
+<section id="profil" style="padding-top:0">
+  <div class="wrap">
+    <div class="profile reveal">
+      <div class="profile-top">
+        <div class="who">
+          <span class="mono" aria-hidden="true">CA</span>
+          <div>
+            <h2>Clarje Epiphane ANOUMAN</h2>
+            <div class="role">Candidat au poste de Responsable Intelligence Artificielle</div>
+            <p>Chef de projet digital et fondateur d’Ebabi Entreprise. Master en coordination locale de sécurité (Université Félix Houphouët-Boigny) : une formation à la gestion des risques que j’applique à chaque projet numérique.</p>
+          </div>
+        </div>
+        <div class="contacts">
+          <a class="btn btn-light" href="mailto:anoumanclarje@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 6l-10 7L2 6"/></svg>anoumanclarje@gmail.com</a>
+          <a class="btn btn-ghost" href="tel:+2250789580439">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.9.6 2.8.7a2 2 0 011.7 2z"/></svg>+225 07 89 58 04 39</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/clarje-epiphane-anouman-49a2113a0" target="_blank" rel="noopener">Profil LinkedIn</a>
+          <a class="btn btn-ghost" href="https://ebabientreprise.com/solutions" target="_blank" rel="noopener">Plateformes réalisées</a>
+        </div>
+      </div>
+      <h3 class="proofs-title">Ce que j’ai déjà fait, au regard des missions du poste</h3>
+      <div class="proofs">
+        <div class="proof"><small>Recueillir, déployer, former</small><p><b>IZI Numeric Print :</b> workflow conçu avec la direction, de la commande à la livraison (production, contrôle qualité, marges, équipes), déployé et équipes formées.</p></div>
+        <div class="proof"><small>Piloter un portefeuille</small><p><b>Ebabi Entreprise :</b> 15 plateformes métier en production, dont 6 livrées à des clients, dans 9 secteurs. Cadrage, cahier des charges, migration, formation, support.</p></div>
+        <div class="proof"><small>Intégrer l’IA, protéger les données</small><p>IA générative et automatisation intégrées selon les besoins ; <b>données isolées par organisation</b>, paiements confiés à un agrégateur spécialisé.</p></div>
+        <div class="proof"><small>Former et animer</small><p>Formations internes et externes depuis 2021, formations d’équipes chez Cyberlanca, <b>accompagnement des utilisateurs</b> à chaque mise en production.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Note personnelle rédigée par Clarje Epiphane ANOUMAN dans le cadre de sa candidature au poste de Responsable Intelligence Artificielle.</p>
+    <p>Ce document n’émane pas d’Air Côte d’Ivoire. Les cas d’usage et les notes sont des hypothèses construites à partir d’informations publiques. Abidjan, novembre 2026.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Revenir en haut"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Données : source unique pour fiches, classement et simulateur ---------- */
+  var CASES = {
+    copilot:      { name: 'Encadrer Microsoft 365 Copilot', short: 'Copilot (toutes directions)', val: 8, fais: 9, data: 7, risk: 'med' },
+    reclamations: { name: 'Réclamations passagers et bagages', short: 'Réclamations passagers', val: 8, fais: 6, data: 6, risk: 'high' },
+    retards:      { name: 'Anticipation des retards en cascade', short: 'Retards en cascade', val: 9, fais: 5, data: 6, risk: 'med' },
+    mro:          { name: 'Recherche dans la documentation technique', short: 'Documentation technique', val: 8, fais: 6, data: 7, risk: 'low' },
+    escales:      { name: 'Contrôle des factures d’escale', short: 'Factures d’escale', val: 8, fais: 7, data: 7, risk: 'med' }
+  };
+  var RISK = { low: { label: 'faible', penalty: 0 }, med: { label: 'modérée', penalty: 3 }, high: { label: 'élevée', penalty: 15 } };
+  var TONE = { p1: 'var(--p1)', p2: 'var(--p2)', pc: 'var(--pc)', pb: 'var(--pb)', wait: 'var(--faint)' };
+
+  function evaluate(c){
+    var raw = Math.round((c.val * 0.4 + c.fais * 0.3 + c.data * 0.3) * 10);
+    var score = Math.max(0, Math.min(100, raw - RISK[c.risk].penalty));
+    var d;
+    if (c.risk === 'high' && c.data <= 5) {
+      d = { tone: 'pb', label: 'Non engagé en l’état', short: 'Non engagé',
+        why: 'Données sensibles et données insuffisantes. Pas de pilote : d’abord fiabiliser les données, puis analyse d’impact, formalités ARTCI et accord du RSSI.' };
+    } else if (c.risk === 'high' && c.val >= 7) {
+      d = { tone: 'pc', label: 'Priorité 2 : sous conditions de conformité', short: 'Priorité 2 · sous conditions',
+        why: 'Forte valeur, mais données de niveau 3. Le pilote ne démarre qu’après analyse d’impact, formalités auprès de l’ARTCI, hébergement validé par le RSSI et anonymisation ou pseudonymisation.' };
+    } else if (score >= 75 && c.fais >= 7) {
+      d = { tone: 'p1', label: 'Priorité 1 : premier résultat', short: 'Priorité 1 · premier résultat',
+        why: 'Bonne valeur, faisabilité élevée, risque maîtrisable. À lancer sur un groupe pilote, avec des indicateurs mesurés avant et après.' };
+    } else if (c.data <= 5) {
+      d = { tone: 'pc', label: 'Priorité 3 : chantier données d’abord', short: 'Priorité 3 · données d’abord',
+        why: 'Le besoin est réel mais les données ne sont pas prêtes. Lancer d’abord leur collecte et leur mise en qualité avec le métier et la DSI.' };
+    } else if (score >= 60) {
+      d = { tone: 'p2', label: 'Priorité 2 : projet à cadrer', short: 'Priorité 2 · à cadrer',
+        why: 'Potentiel réel, mais intégration ou validation plus lourde. Cahier des charges, consultation de prestataires et pilote limité avant toute généralisation.' };
+    } else {
+      d = { tone: 'wait', label: 'En attente', short: 'En attente',
+        why: 'Valeur ou faisabilité insuffisante au regard des priorités de l’année. Le besoin reste au portefeuille et sera réévalué.' };
+    }
+    d.score = score;
+    return d;
+  }
+  window.evaluateCase = evaluate; // exposé pour vérification
+
+  /* ---------- Fiches : indicateurs générés depuis les données ---------- */
+  $$('.case').forEach(function(card){
+    var c = CASES[card.dataset.key], r = evaluate(c);
+    var prio = $('[data-prio]', card);
+    prio.textContent = r.short;
+    prio.className = 'prio ' + (r.tone === 'wait' ? 'p2' : r.tone);
+    $('[data-meters]', card).innerHTML =
+      meter('Valeur', c.val) + meter('Faisabilité', c.fais) + meter('Données', c.data);
+    $('[data-risk]', card).innerHTML = '<span>Sensibilité des données : <b class="' + c.risk + '">' + RISK[c.risk].label + '</b></span><span class="score-chip">' + r.score + '/100</span>';
+  });
+  function meter(l, v){ return '<div class="meter"><span>' + l + '</span><i style="--v:' + v + '"></i><b>' + v + '/10</b></div>'; }
+
+  /* ---------- Classement ---------- */
+  var rank = $('#rank');
+  Object.keys(CASES).map(function(k){ return { k: k, c: CASES[k], r: evaluate(CASES[k]) }; })
+    .sort(function(a, b){ return b.r.score - a.r.score; })
+    .forEach(function(o, i){
+      var li = document.createElement('li');
+      li.dataset.key = o.k;
+      li.tabIndex = 0;
+      li.setAttribute('role', 'button');
+      li.setAttribute('aria-label', o.c.name + ', ' + o.r.score + ' sur 100, ' + o.r.label + '. Charger dans le simulateur');
+      li.innerHTML = '<span class="nm">' + o.c.short + '</span><span class="sc">' + o.r.score + '</span>' +
+        '<span class="bar"><i style="--w:' + o.r.score + '%;background:' + TONE[o.r.tone] + ';transition-delay:' + (i * 0.12) + 's"></i></span>' +
+        '<span class="lbl" style="color:' + TONE[o.r.tone] + '">' + o.r.label + '</span>';
+      rank.appendChild(li);
+    });
+  rank.addEventListener('click', pick);
+  rank.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(e); } });
+  function pick(e){
+    var li = e.target.closest('li'); if (!li) return;
+    preset.value = li.dataset.key; loadPreset();
+    if (window.innerWidth < 980) $('#simulateur').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  /* ---------- Simulateur ---------- */
+  var preset = $('#preset'), val = $('#val'), fais = $('#fais'), data = $('#data'), risk = $('#risk');
+  Object.keys(CASES).forEach(function(k){ preset.add(new Option(CASES[k].name, k)); });
+  preset.add(new Option('Nouveau besoin (curseurs libres)', 'custom'));
+  var CIRC = 2 * Math.PI * 56, shown = 0, raf;
+
+  function paintRange(el){ el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%'); }
+  function loadPreset(){
+    var c = CASES[preset.value];
+    if (c) { val.value = c.val; fais.value = c.fais; data.value = c.data; risk.value = c.risk; }
+    update();
+  }
+  function manual(){ preset.value = 'custom'; update(); }
+  function update(){
+    var c = { val: +val.value, fais: +fais.value, data: +data.value, risk: risk.value }, r = evaluate(c);
+    [val, fais, data].forEach(paintRange);
+    $('#valOut').textContent = c.val + '/10'; $('#faisOut').textContent = c.fais + '/10'; $('#dataOut').textContent = c.data + '/10';
+    var ring = $('#ringVal');
+    ring.style.strokeDashoffset = CIRC * (1 - r.score / 100);
+    ring.style.stroke = TONE[r.tone];
+    var dec = $('#decision');
+    dec.textContent = r.label;
+    dec.style.color = TONE[r.tone];
+    dec.style.background = 'color-mix(in srgb, ' + TONE[r.tone] + ' 13%, white)';
+    $('#why').textContent = r.why;
+    countTo($('#score'), r.score);
+    $$('#rank li').forEach(function(li){ li.classList.toggle('sel', li.dataset.key === preset.value); });
+  }
+  function countTo(el, target){
+    cancelAnimationFrame(raf);
+    if (reduce) { el.textContent = target; shown = target; return; }
+    var from = shown, t0 = performance.now();
+    (function step(t){
+      var p = Math.min(1, (t - t0) / 600), e = 1 - Math.pow(1 - p, 3);
+      shown = Math.round(from + (target - from) * e);
+      el.textContent = shown;
+      if (p < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+  preset.addEventListener('change', loadPreset);
+  [val, fais, data].forEach(function(el){ el.addEventListener('input', manual); });
+  risk.addEventListener('change', manual);
+  preset.value = 'copilot'; loadPreset();
+
+  /* ---------- Filtres ---------- */
+  $$('.chip').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var f = btn.dataset.filter;
+      $$('.chip').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      $$('.case').forEach(function(card){
+        var on = f === 'all' || card.dataset.cat === f;
+        card.classList.toggle('hide', !on);
+        card.classList.remove('show');
+        if (on && !reduce) { void card.offsetWidth; card.classList.add('show'); }
+      });
+    });
+  });
+
+  /* ---------- Apparition au défilement + compteurs ---------- */
+  function countUp(el){
+    var end = +el.dataset.count;
+    if (reduce) { el.textContent = end; return; }
+    var t0 = performance.now();
+    (function step(t){
+      var p = Math.min(1, (t - t0) / 1400);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add('in');
+        if (el.classList.contains('stats')) $$('[data-count]', el).forEach(countUp);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal, #timeline, #rank, .case').forEach(function(el){ io.observe(el); });
+  } else {
+    $$('.reveal, #timeline, #rank, .case').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- Navigation : section active, barre de progression, menu mobile ---------- */
+  var links = $$('.menu a'), nav = $('#nav'), bar = $('#progress'), toTop = $('#toTop');
+  var sections = links.map(function(a){ return $(a.getAttribute('href')); });
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? y / h : 0) + ')';
+      nav.classList.toggle('scrolled', y > 8);
+      toTop.classList.toggle('show', y > innerHeight);
+      var current = -1;
+      sections.forEach(function(s, i){ if (s && s.getBoundingClientRect().top < innerHeight * 0.35) current = i; });
+      links.forEach(function(a, i){ a.classList.toggle('active', i === current); });
+      ticking = false;
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var burger = $('#burger'), menu = $('#menu');
+  function closeMenu(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Ouvrir le menu'); }
+  burger.addEventListener('click', function(){
+    var open = !menu.classList.contains('open');
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  links.forEach(function(a){ a.addEventListener('click', closeMenu); });
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  toTop.addEventListener('click', function(){ scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
+  /* ---------- Impression : tout afficher ---------- */
+  var openBefore = [];
+  addEventListener('beforeprint', function(){
+    openBefore = $$('details').map(function(d){ return d.open; });
+    $$('details').forEach(function(d){ d.open = true; });
+    $$('.reveal, #timeline, #rank, .case').forEach(function(el){ el.classList.add('in'); });
+  });
+  addEventListener('afterprint', function(){ $$('details').forEach(function(d, i){ d.open = openBefore[i]; }); });
+  $$('[data-print]').forEach(function(b){ b.addEventListener('click', function(){ window.print(); }); });
+})();
+</script>
 </body>
 </html>
